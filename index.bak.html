@@ -18,15 +18,19 @@
 	color: #1abc9c;
 	font-size: 50px;
 }
+
 .loading-start {
 	overflow: hidden
 }
+
 .loading-start .modal-start {
 	display: block;
 }
 </style>
 <link rel="shortcut icon" href="./assets/image/logo.png">
-<link rel="stylesheet" href="./assets/css/build.css">
+<link rel="stylesheet" href="./assets/css/jvdict.css">
+<link rel="stylesheet" href="./assets/css/icon-font.css">
+<link rel="stylesheet" href="./assets/css/metro-bootstrap.min.css">
 </head>
 <body class="metro">
 	<div id="div-main" class="div-main">
@@ -58,6 +62,7 @@
 					<div class="navigation-bar-content">
 						<a href="/" class="element"> <span class="icon-grid-view"></span>TỪ
 							ĐIỂN NHẬT-VIỆT-NHẬT</sup></a> <span class="element-divider"></span>
+
 						<div class="element place-right" onclick="getSettingPanel()">
 							SETTING <span class="icon-th-thumb"></span>
 						</div>
@@ -74,6 +79,7 @@
 						<span class="element-divider place-right"></span>
 					</div>
 				</nav>
+
 				<div class="search-box">
 					<div class="search-bar">
 						<input id="word-box" maxlength="50" type="text"
@@ -139,5 +145,13 @@
 		<source id="sound-remind" src="" type="audio/mpeg">
 	</audio>
 </body>
-<script src="./assets/js/build.js"></script>
+<script src="./assets/js/jquery/jquery.min.js"></script>
+<script src="./assets/js/jquery/jquery.widget.min.js"></script>
+<script src="./assets/js/jquery/jquery.slimscroll.js"></script>
+<script src="./assets/js/metro/metro.min.js"></script>
+<script src="./assets/js/make-result.js"></script>
+<script src="./assets/js/jvdict.js"></script>
+<script src="./assets/js/notification.js"></script>
+<script src="./assets/js/setting-panel.js"></script>
+<script src="./assets/js/draw-kanji.js"></script>
 </html>
