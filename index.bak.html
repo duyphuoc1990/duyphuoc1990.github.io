@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+.modal-start {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1001;
+	height: 100%;
+	width: 100%;
+	background: #0072C6 url('./assets/image/loader_icon.gif') 50% 300px
+		no-repeat;
+	text-align: center;
+	padding-top: 200px;
+	color: #1abc9c;
+	font-size: 50px;
+}
+
+.loading-start {
+	overflow: hidden
+}
+
+.loading-start .modal-start {
+	display: block;
+}
+</style>
+<link rel="shortcut icon" href="./assets/image/logo.png">
+<link rel="stylesheet" href="./assets/css/jvdict.css">
+<link rel="stylesheet" href="./assets/css/icon-font.css">
+<link rel="stylesheet" href="./assets/css/metro-bootstrap.min.css">
+</head>
+<body class="metro">
+	<div id="div-main" class="div-main">
+		<div class="modal-start">loading... please wait.</div>
+		<div class="modal-search">loading... please wait.</div>
+		<script>document.getElementById("div-main").classList.add("loading-start")</script>
+		<div id="div-left-wrapper">
+			<div id="div-left">
+				<div class="logo">
+					<img class="logo-img" src="./assets/image/logo.png">
+				</div>
+				<div id="div-history">
+					<div id="history-title">
+						Reminder <i class="icon-download history-add"
+							onclick="manualAddRemind()" title="Add above word to History"></i>
+					</div>
+					<div id="remind-group"></div>
+
+					<div id="history-title">
+						<i class="icon-history"></i> History
+					</div>
+					<div id="history-group"></div>
+				</div>
+			</div>
+		</div>
+		<div id="div-right-wrapper">
+			<div id="div-right">
+				<nav class="navigation-bar">
+					<div class="navigation-bar-content">
+						<a href="/" class="element"> <span class="icon-grid-view"></span>TỪ
+							ĐIỂN NHẬT-VIỆT-NHẬT</sup></a> <span class="element-divider"></span>
+
+						<div class="element place-right" onclick="getSettingPanel()">
+							SETTING <span class="icon-th-thumb"></span>
+						</div>
+						<span class="element-divider place-right"></span> <a
+							class="pull-menu " href="#"></a>
+						<ul class="element-menu place-right">
+							<li><a class="dropdown-toggle" href="#">Help</a>
+								<ul class="dropdown-menu " data-role="dropdown">
+									<li class="disabled"><a href="#">Community</a></li>
+									<li><a href="javascript: getHelpPanel()">About JvDict</a></li>
+									<li><a href="http://phanduyphuoc.tk" target="_blank">About Me</a></li>
+								</ul></li>
+						</ul>
+						<span class="element-divider place-right"></span>
+					</div>
+				</nav>
+
+				<div class="search-box">
+					<div class="search-bar">
+						<input id="word-box" maxlength="50" type="text"
+							autofocus="autofocus">
+						<button class="search-btn" onclick="search()">
+							<i class="icon-search"></i>
+						</button>
+						<button class="search-btn" onclick="toogleDrawpad()">
+							<i class="icon-edit"></i>
+						</button>
+					</div>
+					<br />
+				</div>
+				<div id="search-result">
+					<div class="tab-control" data-role="tab-control">
+						<ul class="tabs">
+							<li class="active"><a href="#_page_1">意味</a></li>
+							<li><a href="#_page_2">漢字</a></li>
+							<li><a href="#_page_3">文法</a></li>
+						</ul>
+						<div class="frames">
+							<div class="frame" id="_page_1">
+								<div id="new-word">
+									<div id="new-word-ctn"></div>
+								</div>
+							</div>
+							<div class="frame" id="_page_2">
+								<div id="kanji">
+									<div id="kanji-ctn"></div>
+								</div>
+							</div>
+							<div class="frame" id="_page_3">
+								<div id="grammar">
+									<div id="grammar-ctn">
+										<div style="font-size: 200px; color: #bdc3c7;">Coming soon!</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="draw-pad" class="draw-pad">
+		<canvas id="kanji-draw" class="kanji-draw"></canvas>
+		<div class="kanji-menu-bar">
+			<div id="kanji-result"></div>
+			<div id="kanji-menu">
+				<button id="full-pad-btn" onclick="kanjiFullPad()">
+					<i class="icon-resize-full-alt"></i>
+				</button>
+				<button onclick="clearCanvas()">
+					<i class="icon-cancel"></i>
+				</button>
+				<button onclick="backCanvas()">
+					<i class="icon-reply"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<audio id="sound-control" controls hidden >
+		<source id="sound-remind" src="" type="audio/mpeg">
+	</audio>
+</body>
+<script src="./assets/js/jquery/jquery.min.js"></script>
+<script src="./assets/js/jquery/jquery.widget.min.js"></script>
+<script src="./assets/js/jquery/jquery.slimscroll.js"></script>
+<script src="./assets/js/metro/metro.min.js"></script>
+<script src="./assets/js/make-result.js"></script>
+<script src="./assets/js/jvdict.js"></script>
+<script src="./assets/js/notification.js"></script>
+<script src="./assets/js/setting-panel.js"></script>
+<script src="./assets/js/draw-kanji.js"></script>
+</html>
