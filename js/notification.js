@@ -1,4 +1,4 @@
-var imageURL = "./assets/image/logo.png";
+var imageURL = "./images/logo.png";
 instance = null;
 var index = 0;
 

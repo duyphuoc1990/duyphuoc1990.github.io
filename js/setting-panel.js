@@ -90,7 +90,7 @@ function createDialog(panelHtml, title) {
 		overlay : true,
 		shadow : true,
 		flat : true,
-		icon : '<img src="./assets/image/logo.png">',
+		icon : '<img src="./images/logo.png">',
 		title : 'Flat window',
 		content : '',
 		padding : 10,
