@@ -35,8 +35,9 @@ function notifyMe(notifTxt) {
 		//delAllRemind();
 		NOTIF_FLAG=FALSE;
 	} else if (Notification.permission === "granted") {
-		instance = new Notification(notifTxt, {
-			icon : imageURL
+		instance = new Notification("JaViDict", {
+			icon : imageURL,
+			body : notifTxt
 		});
 
 	} else if (Notification.permission !== 'denied') {

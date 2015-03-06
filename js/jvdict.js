@@ -16,7 +16,7 @@ KANJI_TAB = "kanji";
 GRAMMAR_TAB = "grammar";
 active_tab = NEW_WORD_TAB;
 search = search_newword;
-getResult = getResultNewWord;
+getResult = getResultJaVi;
 cur_kanji = "";
 cur_new_word = "";
 cur_grammar = "";
@@ -284,15 +284,15 @@ function search_newword() {
 		return;
 	getResult(inputText, true);
 }
-function getResultNewWord(inputText, addRemind) {
+function getResultJaVi(inputText, addRemind) {
 	cur_new_word = inputText;
 	$('body').addClass("loading-search");
 	$.ajax({
 		type : "GET",
-		url : "http://mazii.net/api/search/" + inputText + "/4/1",
+		url : "http://mazii.net/api/search/" + inputText + "/10/1",
 		success : function(result) {
-			$("#new-word-ctn").html(makeJaVi(result.data));
 			$('body').removeClass("loading-search");
+			$("#new-word-ctn").html(makeJaVi(result.data));
 			enter_enabled = true;
 			if (HISTORY_FLAG && addRemind && result.found==true) {
 				var wordObj = {
@@ -301,13 +301,10 @@ function getResultNewWord(inputText, addRemind) {
 				};
 				addHistory(wordObj);
 			}
-			if( result.found==false){
-				$("#new-word-ctn").html("<div class='no-result'>no results :(</div>");
-			}
 		},
 		error : function(result) {
+			$('body').removeClass("loading-search");
 			$("#new-word-ctn").html("<div class='no-result'>Error :(</div>");
-			$("#div-main").removeClass("loading-search");
 			enter_enabled = true;
 		}
 	});
@@ -325,22 +322,15 @@ function getResultKanji(inputText, addRemind) {
 	$("#div-main").addClass("loading-search");
 	$.ajax({
 		type : "GET",
-		url : "http://mazii.net/api/mazii/" + inputText + "/4",
+		url : "http://mazii.net/api/mazii/" + inputText + "/10",
 		success : function(e) {
-			$("#kanji-ctn").html(makeKanji(e.results));
 			$("#div-main").removeClass("loading-search");
+			$("#kanji-ctn").html(makeKanji(e.results));
 			enter_enabled = true;
-			if (HISTORY_FLAG && addRemind && e.status!=302) {
-				var wordObj = {
-					id : ++maxID,
-					word : inputText
-				};
-				addHistory(wordObj);
-			}
 		},
 		error : function(result) {
-			$("#kanji-ctn").html("<div class='no-result'>Error :(</div>");
 			$("#div-main").removeClass("loading-search");
+			$("#kanji-ctn").html("<div class='no-result'>Error :(</div>");
 			enter_enabled = true;
 		}
 	});
@@ -399,7 +389,7 @@ $('.tab-control').tabcontrol().bind("tabcontrolchange", function(event, frame) {
 	if (id == "_page_1") {
 		active_tab = NEW_WORD_TAB;
 		search = search_newword;
-		getResult = getResultNewWord;
+		getResult = getResultJaVi;
 		search();
 	} else if (id == "_page_2") {
 		active_tab = KANJI_TAB;

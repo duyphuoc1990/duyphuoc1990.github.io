@@ -224,28 +224,6 @@ function makeJaViOld(result) {
 		return "<div class='no-result'>no results :(</div>";
 	}
 }
-
-function makeJaVi(data) {
-	var txt = "";
-    for (var i = 0; i < data.length; i++) {
-        if (cur_new_word != data[i].word)
-            continue;
-        txt += '<div class ="result-box">';
-        txt += '<p class="word">【'+data[i].word+'】</p>';
-        txt += '<p class="reb">'+data[i].phonetic+'</p>';
-        txt += '<br/>';
-        for (var j = 0; j < data[i].means.length; j++) {
-        	txt += '<p class="field">☆'+data[i].means[j].kind+'</p>';
-        	txt += '<p class="ja-mean">◆'+data[i].means[j].mean+'</p>';
-            for (var k = 0; k < data[i].means[j].examples.length; k++) {
-            	txt += '<p class="ja-example">※'+data[i].means[j].examples[k].content+'</p>';
-            	txt += '<p class="ja-trans">'+data[i].means[j].examples[k].mean+'</p>';
-            }
-        }
-        txt +='</div>';
-    }
-    return txt;
-}
 function makeKanjiOld(result) {
 	var txt = "";
 	var allItem = JSON.parse(result);
@@ -267,9 +245,32 @@ function makeKanjiOld(result) {
 		return "<div class='no-result'>no results :(</div>";
 	}
 }
+function makeJaVi(data) {
+	var txt = "";
+    for (var i = 0; data!=null && i < data.length; i++) {
+        if (cur_new_word != data[i].word)
+            continue;
+        txt += '<div class ="result-box">';
+        txt += '<p class="word">【'+data[i].word+'】</p>';
+        txt += '<p class="reb">'+data[i].phonetic+'</p>';
+        for (var j = 0; data[i].means!=null && j < data[i].means.length; j++) {
+        	txt += '<p class="field">☆'+data[i].means[j].kind+'</p>';
+        	txt += '<p class="ja-mean">◆'+data[i].means[j].mean+'</p>';
+            for (var k = 0; k < data[i].means[j].examples.length; k++) {
+            	txt += '<p class="ja-example">※'+data[i].means[j].examples[k].content+'</p>';
+            	txt += '<p class="ja-trans">'+data[i].means[j].examples[k].mean+'</p>';
+            }
+        }
+        txt +='</div>';
+    }
+    if(txt=="")txt="<div class='no-result'>no results :(</div>";
+    return txt;
+}
+
 function makeKanji(data) {
 	var txt = "";
-    for (var i = 0; i < data.length; i++) {
+   if(data!=null){
+    for (var i = data.length-1; i >= 0 ; i--) {
     	var item = data[i];
     	txt += '<div class ="result-box">';
 		txt += '<p class="word">【' + item.kanji + '】</p>';
@@ -277,16 +278,25 @@ function makeKanji(data) {
 		txt += '<p class="comp">';
 	       for (var j = 0; data[i].compDetail!=null&&j < data[i].compDetail.length; j++) {
 	            txt += data[i].compDetail[j].w;
-	            txt += '( '+ data[i].compDetail[j].h+')';
+	            if(data[i].compDetail[j].h!=null)
+	              txt += '( '+ data[i].compDetail[j].h+') ';
+	            if(j<data[i].compDetail.length-1)
+	            	txt += '+ ';
 	        }
 	       txt +='</p>';
+	    if(item.level!=null)
 		txt += '<p class="level">Level: '  + item.level + '</p><br/>';
 		txt += '<p class="stroke_count">Stroke Count: '  + item.stroke_count + '</p><br/>';
-		txt += '<p class="on">Onyomi: ' + item.on.replace(/ /g, "　") + '</p><br/>';
-		txt += '<p class="kun">Kunyomi: ' + item.kun.replace(/ /g, "　") + '</p><br/>';
-		txt += '<p class="detail">. ' + item.detail.replace(/##/g, "<br/>. ") + '</p></div>';
+		if(item.on!=null)
+		   txt += '<p class="on">Onyomi: ' + item.on.replace(/ /g, "　") + '</p><br/>';
+		if(item.kun!=null)
+		   txt += '<p class="kun">Kunyomi: ' + item.kun.replace(/ /g, "　") + '</p><br/>';
+		if(item.detail!=null)
+		   txt += '<p class="detail">※ ' + item.detail.replace(/##/g, "<br/>※ ") + '</p></div>';
  
        txt +='</div>';
+     }
     }
+    if(txt=="")txt="<div class='no-result'>no results :(</div>";
     return txt;
 }

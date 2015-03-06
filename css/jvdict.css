@@ -92,8 +92,9 @@ body {
 	font-size: 25px;
 	width: 510px;
 	height: 45px;
-	border: 0;
+	border: 0!important;
 	margin-right: -5px !important;
+	padding:5px;
 	display: inline-block;
 }
 .search-btn {
@@ -256,7 +257,7 @@ div:hover {
 	color:#7f8c8d!important;
 }
 .ja-mean {
-	color: black !important;
+	color: #2980b9 !important;
 	font-size: 24px !important;
 	margin-left: 14px !important;
 	line-height: 27px !important;
@@ -274,42 +275,42 @@ div:hover {
 }
 
 .comp {
-	color: #AA00FF !important;
+	color: #2980b9 !important;
 	font-size: 21px !important;
 	line-height: 30px !important;
 }
 .detail {
-	color: black !important;
-	font-size: 20px !important;
+	color: #2c3e50 !important;
+	font-size: 18px !important;
 	margin-left: 18px !important;
 	line-height: 26px !important;
 }
 .level {
 	display: inline;
-	color: #BF5A15;
+	color: #16a085!important;
 	font-size: 20px !important;
 }
 .stroke_count {
 	display: inline;
-	color: #BF5A15;
+	color: #9b59b6!important;
 	font-size: 20px !important;
 }
 
 .on {
 	display: inline;
-	color: #BF5A15;
+	color: #2980b9!important;
 	font-size: 20px !important;
 }
 
 .kun {
 	display: inline;
-	color: #BF5A15;
+	color: #BF5A15!important;
 	font-size: 20px !important;
 }
 
 .mean {
 	display: inline;
-	color: #BF5A15;
+	color: #008000!important;
 	font-size: 21px !important;
 	line-height: 33px !important;
 }
