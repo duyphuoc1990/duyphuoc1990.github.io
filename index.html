@@ -31,8 +31,8 @@
 </head>
 <body class="metro">
 	<div id="div-main" class="div-main">
-		<div class="modal-start">loading... please wait.</div>
-		<div class="modal-search">loading... please wait.</div>
+		<div class="modal-start">Đang tải dữ liệu ...</div>
+		<div class="modal-search">Đang tra từ ...</div>
 		<script>document.getElementById("div-main").classList.add("loading-start")</script>
 		<div id="div-left-wrapper">
 			<div id="div-left">
@@ -40,13 +40,13 @@
 					<img class="logo-img" src="./images/logo.png">
 				</div>
 				<div id="div-history">
-					<div id="history-title">
+					<div id="reminder-title" class="history-title">
 						Nhắc Từ <i class="icon-download history-add"
 							onclick="manualAddRemind()" title="Thêm từ trong ô tìm kiếm vào Nhắc Từ"></i>
 					</div>
 					<div id="remind-group"></div>
 
-					<div id="history-title">
+					<div id="history-title" class="history-title">
 						<i class="icon-history"></i> Lịch Sử
 					</div>
 					<div id="history-group"></div>
