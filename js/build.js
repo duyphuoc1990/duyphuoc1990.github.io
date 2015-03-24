@@ -1242,7 +1242,7 @@ function DrawKanji() {
     this.curInkTxt;
     this.full_screen = false;
     this.pad_top = 104;
-    this.pad_left = 334;
+    this.pad_left = 336;
     this.pad_width = 615;
     this.pad_height = 445;
 }
