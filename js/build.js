@@ -935,21 +935,21 @@ HistoryData.prototype = {
     },
     
     addRemind: function(wordObj) {
-        var index = findbyText(jvremind, wordObj.word);
+        var index = this.findbyText(this.jvremind, wordObj.word);
         if (index >= 0) {
-            this.delRemind(jvremind[index].id);
+            this.delRemind(this.jvremind[index].id);
         }
         
-        index = this.findbyText(jvhistory, wordObj.word);
+        index = this.findbyText(this.jvhistory, wordObj.word);
         if (index >= 0) {
-            this.delHistory(jvhistory[index].id);
+            this.delHistory(this.jvhistory[index].id);
         }
         this.jvremind.push(wordObj);
-        localStorage.setItem(JVDICT_REMIND, JSON.stringify(jvremind));
+        localStorage.setItem(JVDICT_REMIND, JSON.stringify(this.jvremind));
         $("#remind-group").prepend($(this.makeHisItem(wordObj, true)).fadeIn('slow'));
         
         if (this.jvremind.length > MAX_REMIND) {
-            this.delRemind(jvremind[0].id)
+            this.delRemind(this.jvremind[0].id)
         }
         return true;
     },
