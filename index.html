@@ -60,7 +60,7 @@
 						<a href="/" class="element"> <span class="icon-grid-view"></span>TỪ
 							ĐIỂN NHẬT-VIỆT-NHẬT</sup></a> <span class="element-divider"></span>
 
-						<div class="element place-right" onclick="getSettingPanel()">
+						<div class="element place-right" onclick="panel.getSettingPanel()">
 							CÀI ĐẶT <span class="icon-th-thumb"></span>
 						</div>
 						<span class="element-divider place-right"></span> <a
@@ -69,7 +69,7 @@
 							<li><a class="dropdown-toggle" href="#">Hướng Dẫn</a>
 								<ul class="dropdown-menu " data-role="dropdown">
 									<li class="disabled"><a href="#">Diễn Đàn</a></li>
-									<li><a href="javascript: getHelpPanel()">Hướng Dẫn</a></li>
+									<li><a href="javascript: panel.getHelpPanel()">Hướng Dẫn</a></li>
 									<li><a href="http://phanduyphuoc.tk" target="_blank">Phan Duy Phước</a></li>
 								</ul></li>
 						</ul>
@@ -81,10 +81,10 @@
 					<div class="search-bar">
 						<input id="word-box" maxlength="50" type="text"
 							autofocus="autofocus" placeholder="tìm kiếm...">
-						<button class="search-btn" onclick="search()">
+						<button class="search-btn" onclick="search.search()">
 							<i class="icon-search"></i>
 						</button>
-						<button class="search-btn" onclick="toogleDrawpad()">
+						<button class="search-btn" onclick="drawKanji.toogleDrawpad()">
 							<i class="icon-edit"></i>
 						</button>
 					</div>
@@ -126,13 +126,13 @@
 		<div class="kanji-menu-bar">
 			<div id="kanji-result"></div>
 			<div id="kanji-menu">
-				<button id="full-pad-btn" onclick="kanjiFullPad()">
+				<button id="full-pad-btn" onclick="drawKanji.kanjiFullPad()">
 					<i class="icon-resize-full-alt"></i>
 				</button>
-				<button onclick="clearCanvas()">
+				<button onclick="drawKanji.clearCanvas()">
 					<i class="icon-cancel"></i>
 				</button>
-				<button onclick="backCanvas()">
+				<button onclick="drawKanji.backCanvas()">
 					<i class="icon-reply"></i>
 				</button>
 			</div>
