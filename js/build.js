@@ -1099,7 +1099,7 @@ AlertWord.prototype = {
             });
         }
         if (this.instance != null) {
-            setTimeout(this.instance.close.bind(this), TIME_SHOW * 1000);
+            setTimeout(this.instance.close, TIME_SHOW * 1000);
             
             this.instance.onclick = function() {
                 $("#word-box").val(notifTxt);
