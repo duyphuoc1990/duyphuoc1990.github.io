@@ -1016,7 +1016,7 @@ HistoryData.prototype = {
         if (string.length == 0)
             return;
         var wordObj = {
-            id: ++maxID,
+            id: ++this.maxID,
             word: string
         };
         this.addRemind(wordObj);
