@@ -1065,7 +1065,7 @@ AlertWord.prototype = {
     start: function() {
         var nextWord = window.hisData.nextRemind();
         if (NOTIF_FLAG && nextWord != null) {
-            this.loadSound(nextWord);
+            this.loadSound(nextWord.word);
         }
         setTimeout(this.start.bind(this), TIME_DELAY * 1000);
     },
@@ -1103,7 +1103,7 @@ AlertWord.prototype = {
             
             this.instance.onclick = function() {
                 $("#word-box").val(notifTxt);
-                getResult(notifTxt, false);
+                search.getResult(notifTxt, false);
                 alert("Chào mừng trở lại với JaviDict!");
             };
             this.instance.onerror = function() {
