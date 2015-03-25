@@ -1073,7 +1073,7 @@ AlertWord.prototype = {
     loadSound: function(notifTxt) {
         if (SOUND_REMIND) {
             soundURL = 'http://www.ispeech.org/p/generic/getaudio?text=' + notifTxt 
-            + '&voice=jpjapanesefemale&speed=-2&action=convert';
+            + '&voice=jpjapanesefemale&speed=-1&action=convert';
             $("#sound-remind").attr("src", soundURL);
             $("#sound-control").trigger('load');
         }
