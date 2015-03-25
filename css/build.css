@@ -497,6 +497,7 @@ div:hover {
 	display: inline;
 	color: #16a085 !important;
 	font-size: 20px !important;
+	line-height: 27px !important;
 }
 
 .stroke_count {
@@ -515,6 +516,7 @@ div:hover {
 	display: inline;
 	color: #BF5A15 !important;
 	font-size: 20px !important;
+	line-height: 26px !important;
 }
 
 .mean {
