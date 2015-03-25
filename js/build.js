@@ -1035,9 +1035,7 @@ HistoryData.prototype = {
                 this.index = 0;
             }
         }
-        for(i=0;i<3;i++) {
-            $("#history-"+this.index).fadeTo('slow', 0.5).fadeTo('slow', 1.0);
-          }
+
         return this.jvremind[this.index];
     },
     
