@@ -1078,7 +1078,7 @@ AlertWord.prototype = {
 	if(NOTIF_FLAG && $("#history-"+id)!=null && count==this.count){
 		$("#history-"+id).find(".icon-bell").fadeOut(500);
 		$("#history-"+id).find(".icon-bell").fadeIn(500);
-		setTimeout(this.notifBlink.bind(this, id), 1000);
+		setTimeout(this.notifBlink.bind(this, id, count), 1000);
 		}
 	},
     loadSound: function(notifTxt) {
