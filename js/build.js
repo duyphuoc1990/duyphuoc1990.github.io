@@ -1026,8 +1026,7 @@ HistoryData.prototype = {
             return null;
         
         if (RANDOM_FLAG) {
-            this.index = Math.floor(((Math.random() + Math.random()) / 2) 
-            * this.jvremind.length);
+            this.index = Math.floor(Math.random() * this.jvremind.length);
         } else {
             if (this.index < this.jvremind.length - 1) {
                 this.index = this.index + 1;
