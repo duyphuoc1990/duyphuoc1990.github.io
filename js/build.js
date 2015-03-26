@@ -998,10 +998,10 @@ HistoryData.prototype = {
     makeHisItem: function(obj, isRemind) {
         var remindBtnTxt, delBtnTxt;
         if (isRemind != true) {
-            remindBtnTxt = '<i id = "remindBtn-' + obj.id + '"  class="icon-bell icon-bell jv-inactive" onclick ="hisData.addRemindByID(' + obj.id + ')"></i>';
+            remindBtnTxt = '<i id = "remindBtn-' + obj.id + '"  class="icon-bell jv-inactive" onclick ="hisData.addRemindByID(' + obj.id + ')"></i>';
             delBtnTxt = '<i class="icon-cancel icon-delete" onclick ="hisData.delHistory(' + obj.id + ')"></i>';
         } else {
-            remindBtnTxt = '<i id = "remindBtn-' + obj.id + '"  class="icon-bell icon-bell" onclick ="hisData.delRemind(' + obj.id + ')"></i>';
+            remindBtnTxt = '<i id = "remindBtn-' + obj.id + '"  class="icon-bell" onclick ="hisData.delRemind(' + obj.id + ')"></i>';
             delBtnTxt = "";
         }
         
@@ -1074,8 +1074,8 @@ AlertWord.prototype = {
     },
     notifBlink:function(id){
 	if(NOTIF_FLAG && $("#history-"+id)!=null && id==this.nextWord.id){
-		$("#history-"+id).find(".icon-bell icon-bell").fadeOut(500);
-		$("#history-"+id).find(".icon-bell icon-bell").fadeIn(500);
+		$("#history-"+id).find(".icon-bell").fadeOut(500);
+		$("#history-"+id).find(".icon-bell").fadeIn(500);
 		setTimeout(this.notifBlink.bind(this, id), 1000);
 		}
 	},
