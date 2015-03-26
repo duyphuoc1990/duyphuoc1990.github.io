@@ -1062,19 +1062,20 @@ function AlertWord() {
     this.imageURL = "./images/logo.png";
     this.instance = null;
 	this.nextWord;
+	this.count=0;
 }
 AlertWord.prototype = {
     start: function() {
         this.nextWord = window.hisData.nextRemind();
         if (NOTIF_FLAG && this.nextWord != null) {
             this.loadSound(this.nextWord.word);
-			this.notifBlink(this.nextWord.id);
+			this.notifBlink(this.nextWord.id, ++this.count);
         }
         setTimeout(this.start.bind(this), TIME_DELAY * 1000);
 
     },
-    notifBlink:function(id){
-	if(NOTIF_FLAG && $("#history-"+id)!=null && id==this.nextWord.id){
+    notifBlink:function(id, count){
+	if(NOTIF_FLAG && $("#history-"+id)!=null && count==this.count){
 		$("#history-"+id).find(".icon-bell").fadeOut(500);
 		$("#history-"+id).find(".icon-bell").fadeIn(500);
 		setTimeout(this.notifBlink.bind(this, id), 1000);
