@@ -1056,7 +1056,12 @@ HistoryData.prototype = {
     },
 
 }
-
+$(window).blur(function(){
+  window.isFocused=false;
+});
+$(window).focus(function(){
+  window.isFocused=true;
+});
 TIME_LOAD_SOUND = 3;
 function AlertWord() {
     this.imageURL = "./images/logo.png";
@@ -1068,8 +1073,10 @@ AlertWord.prototype = {
     start: function() {
         this.nextWord = window.hisData.nextRemind();
         if (NOTIF_FLAG && this.nextWord != null) {
+		if(window.isFocused){
             this.loadSound(this.nextWord.word);
 			this.notifBlink(this.nextWord.id, ++this.count);
+			}
         }
         setTimeout(this.start.bind(this), TIME_DELAY * 1000);
 
