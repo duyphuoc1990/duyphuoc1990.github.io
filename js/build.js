@@ -1074,11 +1074,12 @@ AlertWord.prototype = {
         setTimeout(this.start.bind(this), TIME_DELAY * 1000);
 
     },
-    notifBlink:function(id, count){
-	if(NOTIF_FLAG && $("#history-"+id)!=null && count==this.count){
+    notifBlink:function(id, countAlert){
+	var alertId = countAlert;
+	if(NOTIF_FLAG && $("#history-"+id)!=null && alertId==this.count){
 		$("#history-"+id).find(".icon-bell").fadeOut(500);
 		$("#history-"+id).find(".icon-bell").fadeIn(500);
-		setTimeout(this.notifBlink.bind(this, id, count), 1000);
+		setTimeout(this.notifBlink.bind(this, id, alertId), 1000);
 		}
 	},
     loadSound: function(notifTxt) {
