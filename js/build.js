@@ -1073,7 +1073,7 @@ function AlertWord() {
 AlertWord.prototype = {
     start: function() {
 	var tmp = window.hisData.nextRemind();
-	if(this.nextWord.word==tmp.word)
+	if(this.nextWord==tmp)
         tmp = window.hisData.nextRemind();
 	this.nextWord = tmp;
         if (NOTIF_FLAG && this.nextWord != null) {
