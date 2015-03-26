@@ -1074,8 +1074,8 @@ AlertWord.prototype = {
     },
     notifBlink:function(id){
 	if(NOTIF_FLAG && $("#history-"+id)!=null && id==this.nextWord.id){
-		$("#history-"+id).children("history-item-text").fadeOut(500);
-		$("#history-"+id).children("history-item-text").fadeIn(500);
+		$("#history-"+id).children(".icon-bell icon-bell").fadeOut(500);
+		$("#history-"+id).children(".icon-bell icon-bell").fadeIn(500);
 		setTimeout(this.notifBlink.bind(this, id), 1000);
 		}
 	},
