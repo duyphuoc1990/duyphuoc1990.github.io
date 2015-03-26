@@ -1026,8 +1026,7 @@ HistoryData.prototype = {
             return null;
         
         if (RANDOM_FLAG) {
-            this.index = Math.floor(((Math.random() + Math.random()) / 2) 
-            * this.jvremind.length);
+            this.index = Math.floor(Math.random() * this.jvremind.length);
         } else {
             if (this.index < this.jvremind.length - 1) {
                 this.index = this.index + 1;
@@ -1073,7 +1072,10 @@ function AlertWord() {
 }
 AlertWord.prototype = {
     start: function() {
-        this.nextWord = window.hisData.nextRemind();
+	var tmp = window.hisData.nextRemind();
+	if(this.nextWord.word==tmp.word)
+        tmp = window.hisData.nextRemind();
+	this.nextWord = tmp;
         if (NOTIF_FLAG && this.nextWord != null) {
             this.loadSound(this.nextWord.word);
 			this.notifBlink(this.nextWord.id, ++this.count);
