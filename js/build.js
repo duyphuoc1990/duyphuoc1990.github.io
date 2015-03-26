@@ -1056,6 +1056,8 @@ HistoryData.prototype = {
     },
 
 }
+
+window.isFocused=true;
 $(window).blur(function(){
   window.isFocused=false;
 });
@@ -1073,18 +1075,18 @@ AlertWord.prototype = {
     start: function() {
         this.nextWord = window.hisData.nextRemind();
         if (NOTIF_FLAG && this.nextWord != null) {
-		if(window.isFocused){
             this.loadSound(this.nextWord.word);
 			this.notifBlink(this.nextWord.id, ++this.count);
-			}
         }
         setTimeout(this.start.bind(this), TIME_DELAY * 1000);
 
     },
     notifBlink:function(id, alertId){
 	if(NOTIF_FLAG && $("#history-"+id)!=null && alertId==this.count){
-		$("#history-"+id).find(".icon-bell").fadeOut(500);
-		$("#history-"+id).find(".icon-bell").fadeIn(500);
+		if(window.isFocused){
+			$("#history-"+id).find(".icon-bell").fadeOut(500);
+			$("#history-"+id).find(".icon-bell").fadeIn(500);
+		}
 		setTimeout(this.notifBlink.bind(this, id, alertId), 1000);
 		}
 	},
