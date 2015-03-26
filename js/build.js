@@ -1057,14 +1057,6 @@ HistoryData.prototype = {
 }
 
 
-window.isFocused=true;
-$(window).blur(function(){
-  window.isFocused=false;
-});
-$(window).focus(function(){
-  window.isFocused=true;
-});
-TIME_LOAD_SOUND = 3;
 function AlertWord() {
     this.imageURL = "./images/logo.png";
     this.instance = null;
@@ -1617,6 +1609,7 @@ NOTIF_FLAG = false;
 SOUND_REMIND = false;
 MAX_REMIND = 15;
 MAX_HISTORY = 100;
+TIME_LOAD_SOUND = 3;
 
 NEW_WORD_TAB = "newword";
 KANJI_TAB = "kanji";
@@ -1650,7 +1643,7 @@ function loadLocalStore() {
     
     for (var index in hisData.jvhistory) {
         wordObj = hisData.jvhistory[index];
-        $("#history-group").html(hisData.makeHisItem(wordObj) + $("#history-group").html());
+        $("#history-group").prepend(hisData.makeHisItem(wordObj));
     }
     // load jvreminder
     hisData.jvremind = JSON.parse(localStorage.getItem(JVDICT_REMIND));
@@ -1659,7 +1652,7 @@ function loadLocalStore() {
     
     for (var index in hisData.jvremind) {
         wordObj = hisData.jvremind[index];
-        $("#remind-group").html(hisData.makeHisItem(wordObj, true) + $("#remind-group").html());
+        $("#remind-group").prepend(hisData.makeHisItem(wordObj, true));
     }
 
     // load randomShow flag
@@ -1732,4 +1725,11 @@ $('#word-box').keyup(function(e) {
 $('.tab-control').tabcontrol().bind("tabcontrolchange", function(event, frame) {
     var id = $(frame).attr("id");
     search.changeTab(id);
+});
+window.isFocused=true;
+$(window).blur(function(){
+  window.isFocused=false;
+});
+$(window).focus(function(){
+  window.isFocused=true;
 });
