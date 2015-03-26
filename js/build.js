@@ -1068,6 +1068,7 @@ AlertWord.prototype = {
         this.nextWord = window.hisData.nextRemind();
         if (NOTIF_FLAG && this.nextWord != null) {
             this.loadSound(this.nextWord.word);
+			this.notifBlink(this.nextWord.id);
         }
         setTimeout(this.start.bind(this), TIME_DELAY * 1000);
 
@@ -1090,7 +1091,6 @@ AlertWord.prototype = {
     },
     notifyMe: function(notifTxt) {
 		if(NOTIF_FLAG == false)return;
-		this.notifBlink(this.nextWord.id);
         if (!("Notification" in window)) {
             alert("Trinh duy?t nay khong h? tr? nh?c t?, hay dung phien b?n m?i nh?t c?a Chrome, Firefox!");
             NOTIF_FLAG = false;
