@@ -1074,8 +1074,7 @@ AlertWord.prototype = {
         setTimeout(this.start.bind(this), TIME_DELAY * 1000);
 
     },
-    notifBlink:function(id, countAlert){
-	var alertId = countAlert;
+    notifBlink:function(id, alertId){
 	if(NOTIF_FLAG && $("#history-"+id)!=null && alertId==this.count){
 		$("#history-"+id).find(".icon-bell").fadeOut(500);
 		$("#history-"+id).find(".icon-bell").fadeIn(500);
