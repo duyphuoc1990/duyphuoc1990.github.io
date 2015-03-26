@@ -767,7 +767,7 @@ wanakana = wanakana || {}, wanakana.version = "1.3.7", "function" == typeof defi
     return a = wanakana._romajiToKana(a, b)
 }, wanakana.toRomaji = function(a) {
     return a = wanakana._hiraganaToRomaji(a)
-}, wanakana.R_to_J = {a: "あ",i: "い",u: "う",e: "え",o: "お",yi: "い",wu: "う",whu: "う",xa: "ぁ",xi: "ぃ",xu: "ぅ",xe: "ぇ",xo: "ぉ",xyi: "ぃ",xye: "ぇ",ye: "いぇ",wha: "うぁ",whi: "うぃ",whe: "うぇ",who: "うぉ",wi: "うぃ",we: "うぇ",va: "ゔぁ",vi: "ゔぃ",vu: "ゔ",ve: "ゔぇ",vo: "ゔぉ",vya: "ゔゃ",vyi: "ゔぃ",vyu: "ゔゅ",vye: "ゔぇ",vyo: "ゔょ",ka: "か",ki: "き",ku: "く",ke: "け",ko: "こ",lka: "ヵ",lke: "ヶ",xka: "ヵ",xke: "ヶ",kya: "きゃ",kyi: "きぃ",kyu: "きゅ",kye: "きぇ",kyo: "きょ",ca: "か",ci: "き",cu: "く",ce: "け",co: "こ",lca: "ヵ",lce: "ヶ",xca: "ヵ",xce: "ヶ",qya: "くゃ",qyu: "くゅ",qyo: "くょ",qwa: "くぁ",qwi: "くぃ",qwu: "くぅ",qwe: "くぇ",qwo: "くぉ",qa: "くぁ",qi: "くぃ",qe: "くぇ",qo: "くぉ",kwa: "くぁ",qyi: "くぃ",qye: "くぇ",ga: "が",gi: "ぎ",gu: "ぐ",ge: "げ",go: "ご",gya: "ぎゃ",gyi: "ぎぃ",gyu: "ぎゅ",gye: "ぎぇ",gyo: "ぎょ",gwa: "ぐぁ",gwi: "ぐぃ",gwu: "ぐぅ",gwe: "ぐぇ",gwo: "ぐぉ",sa: "さ",si: "し",shi: "し",su: "す",se: "せ",so: "そ",za: "ざ",zi: "じ",zu: "ず",ze: "ぜ",zo: "ぞ",ji: "じ",sya: "しゃ",syi: "しぃ",syu: "しゅ",sye: "しぇ",syo: "しょ",sha: "しゃ",shu: "しゅ",she: "しぇ",sho: "しょ",shya: "しゃ",shyu: "しゅ",shye: "しぇ",shyo: "しょ",swa: "すぁ",swi: "すぃ",swu: "すぅ",swe: "すぇ",swo: "すぉ",zya: "じゃ",zyi: "じぃ",zyu: "じゅ",zye: "じぇ",zyo: "じょ",ja: "じゃ",ju: "じゅ",je: "じぇ",jo: "じょ",jya: "じゃ",jyi: "じぃ",jyu: "じゅ",jye: "じぇ",jyo: "じょ",ta: "た",ti: "ち",tu: "つ",te: "て",to: "と",chi: "ち",tsu: "つ",ltu: "っ",xtu: "っ",tya: "ちゃ",tyi: "ちぃ",tyu: "ちゅ",tye: "ちぇ",tyo: "ちょ",cha: "ちゃ",chu: "ちゅ",che: "ちぇ",cho: "ちょ",cya: "ちゃ",cyi: "ちぃ",cyu: "ちゅ",cye: "ちぇ",cyo: "ちょ",chya: "ちゃ",chyu: "ちゅ",chye: "ちぇ",chyo: "ちょ",tsa: "つぁ",tsi: "つぃ",tse: "つぇ",tso: "つぉ",tha: "てゃ",thi: "てぃ",thu: "てゅ",the: "てぇ",tho: "てょ",twa: "とぁ",twi: "とぃ",twu: "とぅ",twe: "とぇ",two: "とぉ",da: "だ",di: "ぢ",du: "づ",de: "で","do": "ど",dya: "ぢゃ",dyi: "ぢぃ",dyu: "ぢゅ",dye: "ぢぇ",dyo: "ぢょ",dha: "でゃ",dhi: "でぃ",dhu: "でゅ",dhe: "でぇ",dho: "でょ",dwa: "どぁ",dwi: "どぃ",dwu: "どぅ",dwe: "どぇ",dwo: "どぉ",na: "な",ni: "に",nu: "ぬ",ne: "ね",no: "の",nya: "にゃ",nyi: "にぃ",nyu: "にゅ",nye: "にぇ",nyo: "にょ",ha: "は",hi: "ひ",hu: "ふ",he: "へ",ho: "ほ",fu: "ふ",hya: "ひゃ",hyi: "ひぃ",hyu: "ひゅ",hye: "ひぇ",hyo: "ひょ",fya: "ふゃ",fyu: "ふゅ",fyo: "ふょ",fwa: "ふぁ",fwi: "ふぃ",fwu: "ふぅ",fwe: "ふぇ",fwo: "ふぉ",fa: "ふぁ",fi: "ふぃ",fe: "ふぇ",fo: "ふぉ",fyi: "ふぃ",fye: "ふぇ",ba: "ば",bi: "び",bu: "ぶ",be: "べ",bo: "ぼ",bya: "びゃ",byi: "びぃ",byu: "びゅ",bye: "びぇ",byo: "びょ",pa: "ぱ",pi: "ぴ",pu: "ぷ",pe: "ぺ",po: "ぽ",pya: "ぴゃ",pyi: "ぴぃ",pyu: "ぴゅ",pye: "ぴぇ",pyo: "ぴょ",ma: "ま",mi: "み",mu: "む",me: "め",mo: "も",mya: "みゃ",myi: "みぃ",myu: "みゅ",mye: "みぇ",myo: "みょ",ya: "や",yu: "ゆ",yo: "よ",xya: "ゃ",xyu: "ゅ",xyo: "ょ",ra: "ら",ri: "り",ru: "る",re: "れ",ro: "ろ",rya: "りゃ",ryi: "りぃ",ryu: "りゅ",rye: "りぇ",ryo: "りょ",la: "ら",li: "り",lu: "る",le: "れ",lo: "ろ",lya: "りゃ",lyi: "りぃ",lyu: "りゅ",lye: "りぇ",lyo: "りょ",wa: "わ",wo: "を",lwe: "ゎ",xwa: "ゎ",n: "ん",nn: "ん","n ": "ん",xn: "ん",ltsu: "っ"}, wanakana.FOUR_CHARACTER_EDGE_CASES = ["lts", "chy", "shy"], wanakana.J_to_R = {"あ": "a","い": "i","う": "u","え": "e","お": "o","ゔぁ": "va","ゔぃ": "vi","ゔ": "vu","ゔぇ": "ve","ゔぉ": "vo","か": "ka","き": "ki","きゃ": "kya","きぃ": "kyi","きゅ": "kyu","く": "ku","け": "ke","こ": "ko","が": "ga","ぎ": "gi","ぐ": "gu","げ": "ge","ご": "go","ぎゃ": "gya","ぎぃ": "gyi","ぎゅ": "gyu","ぎぇ": "gye","ぎょ": "gyo","さ": "sa","す": "su","せ": "se","そ": "so","ざ": "za","ず": "zu","ぜ": "ze","ぞ": "zo","し": "shi","しゃ": "sha","しゅ": "shu","しょ": "sho","じ": "ji","じゃ": "ja","じゅ": "ju","じょ": "jo","た": "ta","ち": "chi","ちゃ": "cha","ちゅ": "chu","ちょ": "cho","つ": "tsu","て": "te","と": "to","だ": "da","ぢ": "di","づ": "du","で": "de","ど": "do","な": "na","に": "ni","にゃ": "nya","にゅ": "nyu","にょ": "nyo","ぬ": "nu","ね": "ne","の": "no","は": "ha","ひ": "hi","ふ": "fu","へ": "he","ほ": "ho","ひゃ": "hya","ひゅ": "hyu","ひょ": "hyo","ふぁ": "fa","ふぃ": "fi","ふぇ": "fe","ふぉ": "fo","ば": "ba","び": "bi","ぶ": "bu","べ": "be","ぼ": "bo","びゃ": "bya","びゅ": "byu","びょ": "byo","ぱ": "pa","ぴ": "pi","ぷ": "pu","ぺ": "pe","ぽ": "po","ぴゃ": "pya","ぴゅ": "pyu","ぴょ": "pyo","ま": "ma","み": "mi","む": "mu","め": "me","も": "mo","みゃ": "mya","みゅ": "myu","みょ": "myo","や": "ya","ゆ": "yu","よ": "yo","ら": "ra","り": "ri","る": "ru","れ": "re","ろ": "ro","りゃ": "rya","りゅ": "ryu","りょ": "ryo","わ": "wa","を": "wo","ん": "n","ゐ": "wi","ゑ": "we","きぇ": "kye","きょ": "kyo","じぃ": "jyi","じぇ": "jye","ちぃ": "cyi","ちぇ": "che","ひぃ": "hyi","ひぇ": "hye","びぃ": "byi","びぇ": "bye","ぴぃ": "pyi","ぴぇ": "pye","みぇ": "mye","みぃ": "myi","りぃ": "ryi","りぇ": "rye","にぃ": "nyi","にぇ": "nye","しぃ": "syi","しぇ": "she","いぇ": "ye","うぁ": "wha","うぉ": "who","うぃ": "wi","うぇ": "we","ゔゃ": "vya","ゔゅ": "vyu","ゔょ": "vyo","すぁ": "swa","すぃ": "swi","すぅ": "swu","すぇ": "swe","すぉ": "swo","くゃ": "qya","くゅ": "qyu","くょ": "qyo","くぁ": "qwa","くぃ": "qwi","くぅ": "qwu","くぇ": "qwe","くぉ": "qwo","ぐぁ": "gwa","ぐぃ": "gwi","ぐぅ": "gwu","ぐぇ": "gwe","ぐぉ": "gwo","つぁ": "tsa","つぃ": "tsi","つぇ": "tse","つぉ": "tso","てゃ": "tha","てぃ": "thi","てゅ": "thu","てぇ": "the","てょ": "tho","とぁ": "twa","とぃ": "twi","とぅ": "twu","とぇ": "twe","とぉ": "two","ぢゃ": "dya","ぢぃ": "dyi","ぢゅ": "dyu","ぢぇ": "dye","ぢょ": "dyo","でゃ": "dha","でぃ": "dhi","でゅ": "dhu","でぇ": "dhe","でょ": "dho","どぁ": "dwa","どぃ": "dwi","どぅ": "dwu","どぇ": "dwe","どぉ": "dwo","ふぅ": "fwu","ふゃ": "fya","ふゅ": "fyu","ふょ": "fyo","ぁ": "a","ぃ": "i","ぇ": "e","ぅ": "u","ぉ": "o","ゃ": "ya","ゅ": "yu","ょ": "yo","っ": "","ゕ": "ka","ゖ": "ka","ゎ": "wa","　": " ","んあ": "n'a","んい": "n'i","んう": "n'u","んえ": "n'e","んお": "n'o","んや": "n'ya","んゆ": "n'yu","んよ": "n'yo"};
+}, wanakana.R_to_J = {a: "あ",i: "い",u: "う",e: "え",o: "お",yi: "い",wu: "う",whu: "う",xa: "ぁ",xi: "ぃ",xu: "ぅ",xe: "ぇ",xo: "ぉ",xyi: "ぃ",xye: "ぇ",ye: "いぇ",wha: "うぁ",whi: "うぃ",whe: "うぇ",who: "うぉ",wi: "うぃ",we: "うぇ",va: "ヴぁ",vi: "ヴぃ",vu: "ヴ",ve: "ヴぇ",vo: "ヴぉ",vya: "ヴゃ",vyi: "ヴぃ",vyu: "ヴゅ",vye: "ヴぇ",vyo: "ヴょ",ka: "か",ki: "き",ku: "く",ke: "け",ko: "こ",lka: "ヵ",lke: "ヶ",xka: "ヵ",xke: "ヶ",kya: "きゃ",kyi: "きぃ",kyu: "きゅ",kye: "きぇ",kyo: "きょ",ca: "か",ci: "き",cu: "く",ce: "け",co: "こ",lca: "ヵ",lce: "ヶ",xca: "ヵ",xce: "ヶ",qya: "くゃ",qyu: "くゅ",qyo: "くょ",qwa: "くぁ",qwi: "くぃ",qwu: "くぅ",qwe: "くぇ",qwo: "くぉ",qa: "くぁ",qi: "くぃ",qe: "くぇ",qo: "くぉ",kwa: "くぁ",qyi: "くぃ",qye: "くぇ",ga: "が",gi: "ぎ",gu: "ぐ",ge: "げ",go: "ご",gya: "ぎゃ",gyi: "ぎぃ",gyu: "ぎゅ",gye: "ぎぇ",gyo: "ぎょ",gwa: "ぐぁ",gwi: "ぐぃ",gwu: "ぐぅ",gwe: "ぐぇ",gwo: "ぐぉ",sa: "さ",si: "し",shi: "し",su: "す",se: "せ",so: "そ",za: "ざ",zi: "じ",zu: "ず",ze: "ぜ",zo: "ぞ",ji: "じ",sya: "しゃ",syi: "しぃ",syu: "しゅ",sye: "しぇ",syo: "しょ",sha: "しゃ",shu: "しゅ",she: "しぇ",sho: "しょ",shya: "しゃ",shyu: "しゅ",shye: "しぇ",shyo: "しょ",swa: "すぁ",swi: "すぃ",swu: "すぅ",swe: "すぇ",swo: "すぉ",zya: "じゃ",zyi: "じぃ",zyu: "じゅ",zye: "じぇ",zyo: "じょ",ja: "じゃ",ju: "じゅ",je: "じぇ",jo: "じょ",jya: "じゃ",jyi: "じぃ",jyu: "じゅ",jye: "じぇ",jyo: "じょ",ta: "た",ti: "ち",tu: "つ",te: "て",to: "と",chi: "ち",tsu: "つ",ltu: "っ",xtu: "っ",tya: "ちゃ",tyi: "ちぃ",tyu: "ちゅ",tye: "ちぇ",tyo: "ちょ",cha: "ちゃ",chu: "ちゅ",che: "ちぇ",cho: "ちょ",cya: "ちゃ",cyi: "ちぃ",cyu: "ちゅ",cye: "ちぇ",cyo: "ちょ",chya: "ちゃ",chyu: "ちゅ",chye: "ちぇ",chyo: "ちょ",tsa: "つぁ",tsi: "つぃ",tse: "つぇ",tso: "つぉ",tha: "てゃ",thi: "てぃ",thu: "てゅ",the: "てぇ",tho: "てょ",twa: "とぁ",twi: "とぃ",twu: "とぅ",twe: "とぇ",two: "とぉ",da: "だ",di: "ぢ",du: "づ",de: "で","do": "ど",dya: "ぢゃ",dyi: "ぢぃ",dyu: "ぢゅ",dye: "ぢぇ",dyo: "ぢょ",dha: "でゃ",dhi: "でぃ",dhu: "でゅ",dhe: "でぇ",dho: "でょ",dwa: "どぁ",dwi: "どぃ",dwu: "どぅ",dwe: "どぇ",dwo: "どぉ",na: "な",ni: "に",nu: "ぬ",ne: "ね",no: "の",nya: "にゃ",nyi: "にぃ",nyu: "にゅ",nye: "にぇ",nyo: "にょ",ha: "は",hi: "ひ",hu: "ふ",he: "へ",ho: "ほ",fu: "ふ",hya: "ひゃ",hyi: "ひぃ",hyu: "ひゅ",hye: "ひぇ",hyo: "ひょ",fya: "ふゃ",fyu: "ふゅ",fyo: "ふょ",fwa: "ふぁ",fwi: "ふぃ",fwu: "ふぅ",fwe: "ふぇ",fwo: "ふぉ",fa: "ふぁ",fi: "ふぃ",fe: "ふぇ",fo: "ふぉ",fyi: "ふぃ",fye: "ふぇ",ba: "ば",bi: "び",bu: "ぶ",be: "べ",bo: "ぼ",bya: "びゃ",byi: "びぃ",byu: "びゅ",bye: "びぇ",byo: "びょ",pa: "ぱ",pi: "ぴ",pu: "ぷ",pe: "ぺ",po: "ぽ",pya: "ぴゃ",pyi: "ぴぃ",pyu: "ぴゅ",pye: "ぴぇ",pyo: "ぴょ",ma: "ま",mi: "み",mu: "む",me: "め",mo: "も",mya: "みゃ",myi: "みぃ",myu: "みゅ",mye: "みぇ",myo: "みょ",ya: "や",yu: "ゆ",yo: "よ",xya: "ゃ",xyu: "ゅ",xyo: "ょ",ra: "ら",ri: "り",ru: "る",re: "れ",ro: "ろ",rya: "りゃ",ryi: "りぃ",ryu: "りゅ",rye: "りぇ",ryo: "りょ",la: "ら",li: "り",lu: "る",le: "れ",lo: "ろ",lya: "りゃ",lyi: "りぃ",lyu: "りゅ",lye: "りぇ",lyo: "りょ",wa: "わ",wo: "を",lwe: "ゎ",xwa: "ゎ",n: "ん",nn: "ん","n ": "ん",xn: "ん",ltsu: "っ"}, wanakana.FOUR_CHARACTER_EDGE_CASES = ["lts", "chy", "shy"], wanakana.J_to_R = {"あ": "a","い": "i","う": "u","え": "e","お": "o","ヴぁ": "va","ヴぃ": "vi","ヴ": "vu","ヴぇ": "ve","ヴぉ": "vo","か": "ka","き": "ki","きゃ": "kya","きぃ": "kyi","きゅ": "kyu","く": "ku","け": "ke","こ": "ko","が": "ga","ぎ": "gi","ぐ": "gu","げ": "ge","ご": "go","ぎゃ": "gya","ぎぃ": "gyi","ぎゅ": "gyu","ぎぇ": "gye","ぎょ": "gyo","さ": "sa","す": "su","せ": "se","そ": "so","ざ": "za","ず": "zu","ぜ": "ze","ぞ": "zo","し": "shi","しゃ": "sha","しゅ": "shu","しょ": "sho","じ": "ji","じゃ": "ja","じゅ": "ju","じょ": "jo","た": "ta","ち": "chi","ちゃ": "cha","ちゅ": "chu","ちょ": "cho","つ": "tsu","て": "te","と": "to","だ": "da","ぢ": "di","づ": "du","で": "de","ど": "do","な": "na","に": "ni","にゃ": "nya","にゅ": "nyu","にょ": "nyo","ぬ": "nu","ね": "ne","の": "no","は": "ha","ひ": "hi","ふ": "fu","へ": "he","ほ": "ho","ひゃ": "hya","ひゅ": "hyu","ひょ": "hyo","ふぁ": "fa","ふぃ": "fi","ふぇ": "fe","ふぉ": "fo","ば": "ba","び": "bi","ぶ": "bu","べ": "be","ぼ": "bo","びゃ": "bya","びゅ": "byu","びょ": "byo","ぱ": "pa","ぴ": "pi","ぷ": "pu","ぺ": "pe","ぽ": "po","ぴゃ": "pya","ぴゅ": "pyu","ぴょ": "pyo","ま": "ma","み": "mi","む": "mu","め": "me","も": "mo","みゃ": "mya","みゅ": "myu","みょ": "myo","や": "ya","ゆ": "yu","よ": "yo","ら": "ra","り": "ri","る": "ru","れ": "re","ろ": "ro","りゃ": "rya","りゅ": "ryu","りょ": "ryo","わ": "wa","を": "wo","ん": "n","ゐ": "wi","ゑ": "we","きぇ": "kye","きょ": "kyo","じぃ": "jyi","じぇ": "jye","ちぃ": "cyi","ちぇ": "che","ひぃ": "hyi","ひぇ": "hye","びぃ": "byi","びぇ": "bye","ぴぃ": "pyi","ぴぇ": "pye","みぇ": "mye","みぃ": "myi","りぃ": "ryi","りぇ": "rye","にぃ": "nyi","にぇ": "nye","しぃ": "syi","しぇ": "she","いぇ": "ye","うぁ": "wha","うぉ": "who","うぃ": "wi","うぇ": "we","ヴゃ": "vya","ヴゅ": "vyu","ヴょ": "vyo","すぁ": "swa","すぃ": "swi","すぅ": "swu","すぇ": "swe","すぉ": "swo","くゃ": "qya","くゅ": "qyu","くょ": "qyo","くぁ": "qwa","くぃ": "qwi","くぅ": "qwu","くぇ": "qwe","くぉ": "qwo","ぐぁ": "gwa","ぐぃ": "gwi","ぐぅ": "gwu","ぐぇ": "gwe","ぐぉ": "gwo","つぁ": "tsa","つぃ": "tsi","つぇ": "tse","つぉ": "tso","てゃ": "tha","てぃ": "thi","てゅ": "thu","てぇ": "the","てょ": "tho","とぁ": "twa","とぃ": "twi","とぅ": "twu","とぇ": "twe","とぉ": "two","ぢゃ": "dya","ぢぃ": "dyi","ぢゅ": "dyu","ぢぇ": "dye","ぢょ": "dyo","でゃ": "dha","でぃ": "dhi","でゅ": "dhu","でぇ": "dhe","でょ": "dho","どぁ": "dwa","どぃ": "dwi","どぅ": "dwu","どぇ": "dwe","どぉ": "dwo","ふぅ": "fwu","ふゃ": "fya","ふゅ": "fyu","ふょ": "fyo","ぁ": "a","ぃ": "i","ぇ": "e","ぅ": "u","ぉ": "o","ゃ": "ya","ゅ": "yu","ょ": "yo","っ": "","?": "ka","?": "ka","ゎ": "wa","　": " ","んあ": "n'a","んい": "n'i","んう": "n'u","んえ": "n'e","んお": "n'o","んや": "n'ya","んゆ": "n'yu","んよ": "n'yo"};
 
 function Utility() {
 }
@@ -824,7 +824,7 @@ Utility.prototype = {
                 if (list[r] == item.kanji) {
                     txt += '<div class ="result-box">';
                     txt += '<p class="word">【' + item.kanji + '】</p>';
-                    txt += '<p class="mean"><b>Nghĩa: ' + item.mean + '</b></p><br/>';
+                    txt += '<p class="mean"><b>Ngh?a: ' + item.mean + '</b></p><br/>';
                     txt += '<p class="comp">';
                     for (var j = 0; data[i].compDetail != null && j < data[i].compDetail.length; j++) {
                         txt += data[i].compDetail[j].w;
@@ -1061,16 +1061,25 @@ HistoryData.prototype = {
 function AlertWord() {
     this.imageURL = "./images/logo.png";
     this.instance = null;
+	this.nextWord;
 }
 AlertWord.prototype = {
     start: function() {
-        var nextWord = window.hisData.nextRemind();
-        if (NOTIF_FLAG && nextWord != null) {
-            this.loadSound(nextWord.word);
+        this.nextWord = window.hisData.nextRemind();
+        if (NOTIF_FLAG && this.nextWord != null) {
+            this.loadSound(this.nextWord.word);
+			this.notifBlink(this.nextWord.id);
         }
         setTimeout(this.start.bind(this), TIME_DELAY * 1000);
+
     },
-    
+    notifBlink:function(id){
+	if(NOTIF_FLAG && $("#history-"+id)!=null && id==this.nextWord.id){
+		$("#history-"+id).fadeOut(500);
+		$("#history-"+id).fadeIn(500);
+		setTimeout(this.notifBlink.bind(this, id), 1000);
+		}
+	},
     loadSound: function(notifTxt) {
         if (SOUND_REMIND) {
             soundURL = 'http://www.ispeech.org/p/generic/getaudio?text=' + notifTxt 
@@ -1081,9 +1090,10 @@ AlertWord.prototype = {
         setTimeout(this.notifyMe.bind(this, notifTxt), 3000);
     },
     notifyMe: function(notifTxt) {
+		if(NOTIF_FLAG == false)return;
         if (!("Notification" in window)) {
-            alert("Trình duyệt này không hỗ trợ nhắc từ, hãy dùng phiên bản mới nhất của Chrome, Firefox!");
-            NOTIF_FLAG = FALSE;
+            alert("Trinh duy?t nay khong h? tr? nh?c t?, hay dung phien b?n m?i nh?t c?a Chrome, Firefox!");
+            NOTIF_FLAG = false;
         } else if (Notification.permission === "granted") {
             this.instance = new Notification("JaViDict", {
                 icon: this.imageURL,
@@ -1093,9 +1103,10 @@ AlertWord.prototype = {
         } else if (Notification.permission !== 'denied') {
             Notification.requestPermission(function(permission) {
                 if (permission === "granted") {
-                    this.instance = new Notification(notifTxt, {
-                        icon: this.imageURL
-                    });
+                    this.instance = new Notification("JaViDict", {
+						icon: this.imageURL,
+						body: notifTxt
+				});
                 }
             });
         }
@@ -1105,7 +1116,7 @@ AlertWord.prototype = {
             this.instance.onclick = function() {
                 $("#word-box").val(notifTxt);
                 search.getResult(notifTxt, false);
-                alert("Chào mừng trở lại với JaviDict!");
+                alert("Chao m?ng tr? l?i v?i JaviDict!");
             };
             this.instance.onerror = function() {
             };
@@ -1120,8 +1131,8 @@ AlertWord.prototype = {
     }
 }
 function ShowPanel() {
-    this.helpPanelTxt = '<div class="help-div"><div><b>Giới thiệu chức năng cơ bản của từ điển:</b></div><div>&nbsp; 1.<span class="Apple-tab-span" style="white-space: pre"> </span>Nhập từ và nhấn nút tìm kiếm để tìm kết quả.</div><div>&nbsp; 2.<span class="Apple-tab-span" style="white-space: pre"> </span>Bật tắt các tùy chọn tìm kiếm từ vựng, hán tự, ngữ pháp.</div><div>&nbsp; 3.<span class="Apple-tab-span" style="white-space: pre"> </span>Click vào nút hình cái chuông trên phần lịch sử để nhắc từ muốn nhớ</div><div>&nbsp; &nbsp;&lt;chú ý: khi đóng tab thì nhắc từ sẽ tự động mất, dữ liệu nhắc từ/lịch sử được lưu trên máy tính của bạn và chỉ mất khi xóa cache data&gt;</div><div>&nbsp; 4.<span class="Apple-tab-span" style="white-space: pre"> </span>Mở Cài Đặt bên góc bên phải để cài đặt thời gian hiện nhắc từ, bật tắt nhắc từ, cho phép lưu lịch sử, hay chọn chế độ nhắc từ theo ngẫu nhiên...</div><div></div><div><b>Hạn chế:</b></div><div>&nbsp; 1. Ứng dụng này sử dụng tài nguyên miễn phí nên tốc độ khá chậm :(</div><div>&nbsp; 2. Từ điển có phần chưa đầy đủ nghĩa, ví dụ...</div><div>&nbsp; (sẽ được cập nhật trong phiên bản tiếp theo)</div></div>';
-    this.settingPanelTxt = '<div class="setting-div"><div><span>Thời gian hiển thị nhắc từ (giây):</span><input id="time-show" type="number"></div><div><span>Thời gian giữa hai lần nhắc từ (giây):</span><input id="time-delay" type="number"></div><div><span>Số lượng nhắc từ tối đa:</span><input id="max-remind" type="number"></div><div><span>Số lượng từ tối đa lưu lịch sử:</span><input id="max-history" type="number"></div><div class="input-control switch jv-setting-switch" data-role="input-control"><label> Hiển thị nhắc từ <input id="notifChk" type="checkbox"> <span class="check jv-setting-check"></span></label> <label> Nhắc từ ngẫu nhiên <input id="randomChk" type="checkbox"> <span class="check jv-setting-check"></span></label> <label> Nhắc từ với âm thanh<input id="RemindSoundChk" type="checkbox"> <span class="check jv-setting-check"></span></label><label> Cho phép lưu lịch sử<input id="historyChk" type="checkbox"> <span class="check jv-setting-check"></span></label> </div><div class="form-actions"><button class="button primary" onclick="panel.applySetting()">Áp Dụng</button> <button class="button" type="button" onclick="$.Dialog.close()">Bỏ Qua</button> <button class="button del-button" onclick="panel.deleteAllHistory()">Xóa Lịch Sử</button> <button class="button del-button" onclick="panel.resetApp()"><b>Cài Đặt Lại</b></button> </div></div>';
+    this.helpPanelTxt = '<div class="help-div"><div><b>Gi?i thi?u ch?c n?ng c? b?n c?a t? ?i?n:</b></div><div>&nbsp; 1.<span class="Apple-tab-span" style="white-space: pre"> </span>Nh?p t? va nh?n nut tim ki?m ?? tim k?t qu?.</div><div>&nbsp; 2.<span class="Apple-tab-span" style="white-space: pre"> </span>B?t t?t cac tuy ch?n tim ki?m t? v?ng, han t?, ng? phap.</div><div>&nbsp; 3.<span class="Apple-tab-span" style="white-space: pre"> </span>Click vao nut hinh cai chuong tren ph?n l?ch s? ?? nh?c t? mu?n nh?</div><div>&nbsp; &nbsp;&lt;chu y: khi ?ong tab thi nh?c t? s? t? ??ng m?t, d? li?u nh?c t?/l?ch s? ???c l?u tren may tinh c?a b?n va ch? m?t khi xoa cache data&gt;</div><div>&nbsp; 4.<span class="Apple-tab-span" style="white-space: pre"> </span>M? Cai ??t ben goc ben ph?i ?? cai ??t th?i gian hi?n nh?c t?, b?t t?t nh?c t?, cho phep l?u l?ch s?, hay ch?n ch? ?? nh?c t? theo ng?u nhien...</div><div></div><div><b>H?n ch?:</b></div><div>&nbsp; 1. ?ng d?ng nay s? d?ng tai nguyen mi?n phi nen t?c ?? kha ch?m :(</div><div>&nbsp; 2. T? ?i?n co ph?n ch?a ??y ?? ngh?a, vi d?...</div><div>&nbsp; (s? ???c c?p nh?t trong phien b?n ti?p theo)</div></div>';
+    this.settingPanelTxt = '<div class="setting-div"><div><span>Th?i gian hi?n th? nh?c t? (giay):</span><input id="time-show" type="number"></div><div><span>Th?i gian gi?a hai l?n nh?c t? (giay):</span><input id="time-delay" type="number"></div><div><span>S? l??ng nh?c t? t?i ?a:</span><input id="max-remind" type="number"></div><div><span>S? l??ng t? t?i ?a l?u l?ch s?:</span><input id="max-history" type="number"></div><div class="input-control switch jv-setting-switch" data-role="input-control"><label> Hi?n th? nh?c t? <input id="notifChk" type="checkbox"> <span class="check jv-setting-check"></span></label> <label> Nh?c t? ng?u nhien <input id="randomChk" type="checkbox"> <span class="check jv-setting-check"></span></label> <label> Nh?c t? v?i am thanh<input id="RemindSoundChk" type="checkbox"> <span class="check jv-setting-check"></span></label><label> Cho phep l?u l?ch s?<input id="historyChk" type="checkbox"> <span class="check jv-setting-check"></span></label> </div><div class="form-actions"><button class="button primary" onclick="panel.applySetting()">Ap D?ng</button> <button class="button" type="button" onclick="$.Dialog.close()">B? Qua</button> <button class="button del-button" onclick="panel.deleteAllHistory()">Xoa L?ch S?</button> <button class="button del-button" onclick="panel.resetApp()"><b>Cai ??t L?i</b></button> </div></div>';
 }
 ;
 
@@ -1205,11 +1216,11 @@ ShowPanel.prototype = {
     },
     
     getSettingPanel: function() {
-        this.createDialog(this.settingPanelTxt, "Cài Đặt");
+        this.createDialog(this.settingPanelTxt, "Cai ??t");
     },
     
     getHelpPanel: function() {
-        this.createDialog(this.helpPanelTxt, "Hướng Dẫn");
+        this.createDialog(this.helpPanelTxt, "H??ng D?n");
     },
     
     createDialog: function(panelHtml, title) {
@@ -1679,11 +1690,11 @@ window.onload = function() {
 };
 
 $("#reminder-title").hover(function() {
-    $(this).prop('title', 'Số từ trong Reminder: ' + hisData.jvremind.length);
+    $(this).prop('title', 'S? t? trong Reminder: ' + hisData.jvremind.length);
 });
 
 $("#history-title").hover(function() {
-    $(this).prop('title', 'Số từ trong History: ' + hisData.jvhistory.length);
+    $(this).prop('title', 'S? t? trong History: ' + hisData.jvhistory.length);
 });
 
 window.addEventListener('resize', function(event) {
