@@ -178,7 +178,6 @@ div:hover {
 .metro .tab-control .tabs>li.active a, .metro .tab-control .tabs>li.active:hover a
 	{
 	border-top: 0 !important;
-	box-shadow: -3px 3px 3px #888;
 	background-color: #4285F4 !important;
 	color: white !important;
 }

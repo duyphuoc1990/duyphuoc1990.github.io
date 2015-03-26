@@ -998,10 +998,10 @@ HistoryData.prototype = {
     makeHisItem: function(obj, isRemind) {
         var remindBtnTxt, delBtnTxt;
         if (isRemind != true) {
-            remindBtnTxt = '<i id = "remindBtn-' + obj.id + '"  class="icon-bell icon-bell jv-inactive" onclick ="hisData.addRemindByID(' + obj.id + ')"></i>';
+            remindBtnTxt = '<i id = "remindBtn-' + obj.id + '"  class="icon-bell jv-inactive" onclick ="hisData.addRemindByID(' + obj.id + ')"></i>';
             delBtnTxt = '<i class="icon-cancel icon-delete" onclick ="hisData.delHistory(' + obj.id + ')"></i>';
         } else {
-            remindBtnTxt = '<i id = "remindBtn-' + obj.id + '"  class="icon-bell icon-bell" onclick ="hisData.delRemind(' + obj.id + ')"></i>';
+            remindBtnTxt = '<i id = "remindBtn-' + obj.id + '"  class="icon-bell" onclick ="hisData.delRemind(' + obj.id + ')"></i>';
             delBtnTxt = "";
         }
         
@@ -1058,19 +1058,42 @@ HistoryData.prototype = {
 }
 
 
+window.isFocused=true;
+$(window).blur(function(){
+  window.isFocused=false;
+});
+$(window).focus(function(){
+  window.isFocused=true;
+});
+TIME_LOAD_SOUND = 3;
 function AlertWord() {
     this.imageURL = "./images/logo.png";
     this.instance = null;
+	this.nextWord;
+	this.count=0;
 }
 AlertWord.prototype = {
     start: function() {
-        var nextWord = window.hisData.nextRemind();
-        if (NOTIF_FLAG && nextWord != null) {
-            this.loadSound(nextWord.word);
+	var tmp = window.hisData.nextRemind();
+	if(this.nextWord==tmp)
+        tmp = window.hisData.nextRemind();
+	this.nextWord = tmp;
+        if (NOTIF_FLAG && this.nextWord != null) {
+            this.loadSound(this.nextWord.word);
+			this.notifBlink(this.nextWord.id, ++this.count);
         }
         setTimeout(this.start.bind(this), TIME_DELAY * 1000);
+
     },
-    
+    notifBlink:function(id, alertId){
+	if(NOTIF_FLAG && $("#history-"+id)!=null && alertId==this.count){
+		if(window.isFocused){
+			$("#history-"+id).find(".icon-bell").fadeOut(500);
+			$("#history-"+id).find(".icon-bell").fadeIn(500);
+		}
+		setTimeout(this.notifBlink.bind(this, id, alertId), 1000);
+		}
+	},
     loadSound: function(notifTxt) {
         if (SOUND_REMIND) {
             soundURL = 'http://www.ispeech.org/p/generic/getaudio?text=' + notifTxt 
@@ -1078,12 +1101,13 @@ AlertWord.prototype = {
             $("#sound-remind").attr("src", soundURL);
             $("#sound-control").trigger('load');
         }
-        setTimeout(this.notifyMe.bind(this, notifTxt), 3000);
+        setTimeout(this.notifyMe.bind(this, notifTxt), TIME_LOAD_SOUND*1000);
     },
     notifyMe: function(notifTxt) {
+		if(NOTIF_FLAG == false)return;
         if (!("Notification" in window)) {
             alert("Trình duyệt này không hỗ trợ nhắc từ, hãy dùng phiên bản mới nhất của Chrome, Firefox!");
-            NOTIF_FLAG = FALSE;
+            NOTIF_FLAG = false;
         } else if (Notification.permission === "granted") {
             this.instance = new Notification("JaViDict", {
                 icon: this.imageURL,
@@ -1093,9 +1117,10 @@ AlertWord.prototype = {
         } else if (Notification.permission !== 'denied') {
             Notification.requestPermission(function(permission) {
                 if (permission === "granted") {
-                    this.instance = new Notification(notifTxt, {
-                        icon: this.imageURL
-                    });
+                    this.instance = new Notification("JaViDict", {
+						icon: this.imageURL,
+						body: notifTxt
+				});
                 }
             });
         }
