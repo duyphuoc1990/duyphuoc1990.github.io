@@ -1068,15 +1068,14 @@ AlertWord.prototype = {
         this.nextWord = window.hisData.nextRemind();
         if (NOTIF_FLAG && this.nextWord != null) {
             this.loadSound(this.nextWord.word);
-			this.notifBlink(this.nextWord.id);
         }
         setTimeout(this.start.bind(this), TIME_DELAY * 1000);
 
     },
     notifBlink:function(id){
 	if(NOTIF_FLAG && $("#history-"+id)!=null && id==this.nextWord.id){
-		$("#history-"+id).fadeOut(500);
-		$("#history-"+id).fadeIn(500);
+		$("#history-"+id).children("history-item-text").fadeOut(500);
+		$("#history-"+id).children("history-item-text").fadeIn(500);
 		setTimeout(this.notifBlink.bind(this, id), 1000);
 		}
 	},
@@ -1091,6 +1090,7 @@ AlertWord.prototype = {
     },
     notifyMe: function(notifTxt) {
 		if(NOTIF_FLAG == false)return;
+		this.notifBlink(this.nextWord.id);
         if (!("Notification" in window)) {
             alert("Trinh duy?t nay khong h? tr? nh?c t?, hay dung phien b?n m?i nh?t c?a Chrome, Firefox!");
             NOTIF_FLAG = false;
