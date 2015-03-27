@@ -1275,9 +1275,7 @@ DrawKanji.prototype = {
         $("#draw-pad").height(height);
         $("#kanji-draw").width(width);
         $("#kanji-draw").height(height - 45);
-        this.kanjiSmallPad();
         this.started = false;
-        this.full_screen = false;
         this.canvas = document.getElementById('kanji-draw');
         this.canvas.width = $("#kanji-draw").width();
         this.canvas.height = $("#kanji-draw").height();
@@ -1290,7 +1288,7 @@ DrawKanji.prototype = {
     toogleDrawpad: function() {
         $("#draw-pad").toggleClass("draw-pad");
         if ($("#draw-pad").css('visibility') !== 'hidden') {
-            this.initData(this.pad_top, this.pad_left, this.pad_width, this.pad_height);
+        	this.kanjiSmallPad();
             this.canvas.addEventListener('mousedown', this.ev_canvas.bind(this), false);
             this.canvas.addEventListener('mousemove', this.ev_canvas.bind(this), false);
             this.canvas.addEventListener('mouseup', this.ev_canvas.bind(this), false);
