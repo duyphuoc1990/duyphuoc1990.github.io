@@ -1275,7 +1275,10 @@ DrawKanji.prototype = {
         $("#draw-pad").height(height);
         $("#kanji-draw").width(width);
         $("#kanji-draw").height(height - 45);
+        $("#full-pad-btn").children("i").removeClass("icon-resize-small-alt");
+        $("#full-pad-btn").children("i").addClass("icon-resize-full-alt");
         this.started = false;
+        this.full_screen = false;
         this.canvas = document.getElementById('kanji-draw');
         this.canvas.width = $("#kanji-draw").width();
         this.canvas.height = $("#kanji-draw").height();
@@ -1292,7 +1295,6 @@ DrawKanji.prototype = {
             this.canvas.addEventListener('mousedown', this.ev_canvas.bind(this), false);
             this.canvas.addEventListener('mousemove', this.ev_canvas.bind(this), false);
             this.canvas.addEventListener('mouseup', this.ev_canvas.bind(this), false);
-            this.full_screen = false;
         }
     },
     
