@@ -267,8 +267,9 @@ div:hover {
 	text-align: center;
 	min-width: 40px;
 	border-right: 1px solid white;
-	padding: 0px 3px 0px 3px;
-	line-height: 30px;
+	padding: 0px 4px 0px 4px;
+	line-height: 35px;
+	font-size: 35px;
 }.history-title {
 	font-size: 35px;
 	margin: 2px 5px 10px 0;
