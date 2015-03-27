@@ -1275,8 +1275,7 @@ DrawKanji.prototype = {
         $("#draw-pad").height(height);
         $("#kanji-draw").width(width);
         $("#kanji-draw").height(height - 45);
-        $("#full-pad-btn").children("i").removeClass("icon-resize-small-alt");
-        $("#full-pad-btn").children("i").addClass("icon-resize-full-alt");
+        this.kanjiSmallPad();
         this.started = false;
         this.full_screen = false;
         this.canvas = document.getElementById('kanji-draw');
@@ -1436,14 +1435,14 @@ DrawKanji.prototype = {
         || document.body.clientWidth;
         
         this.initData(0, 0, width, height);
-        document.getElementById("full-pad-btn").onclick = this.kanjiSmallPad.bind(this);
+        $("#full-pad-btn").click(this.kanjiSmallPad.bind(this));
         $("#full-pad-btn").children("i").removeClass("icon-resize-full-alt");
         $("#full-pad-btn").children("i").addClass("icon-resize-small-alt");
         this.full_screen = true;
     },
     kanjiSmallPad: function() {
         this.initData(this.pad_top, this.pad_left, this.pad_width, this.pad_height);
-        document.getElementById("full-pad-btn").onclick = this.kanjiFullPad.bind(this);
+        $("#full-pad-btn").click(this.kanjiFullPad.bind(this));
         $("#full-pad-btn").children("i").removeClass("icon-resize-small-alt");
         $("#full-pad-btn").children("i").addClass("icon-resize-full-alt");
         this.full_screen = false;
@@ -1691,7 +1690,7 @@ function loadLocalStore() {
 }
 
 window.onload = function() {
-    document.getElementById("div-main").classList.remove("loading-start");
+    $("#div-main").removeClass("loading-start");
     utility.setHeight();
     loadLocalStore();
     alertWord.start();
