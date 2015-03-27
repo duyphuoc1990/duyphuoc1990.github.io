@@ -1382,7 +1382,7 @@ DrawKanji.prototype = {
     makeResulTxt: function(array) {
         text = '';
         for (var i = 0; i < array.length; i++) {
-            text += '<div class ="kanji-item" onclick="addKanjiToSearch(\'' + array[i] + '\')">';
+            text += '<div class ="kanji-item" onclick="drawKanji.addKanjiToSearch(\'' + array[i] + '\')">';
             text += array[i];
             text += '</div>';
         }
