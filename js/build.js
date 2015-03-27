@@ -1270,7 +1270,7 @@ DrawKanji.prototype = {
         this.data = [];
         this.curInkTxt = "";
         $("#draw-pad").offset({top: top,left: left});
-        $("#draw-pad").css("zIndex", 10001);
+        $("#draw-pad").css("zIndex", 101);
         $("#draw-pad").width(width);
         $("#draw-pad").height(height);
         $("#kanji-draw").width(width);
