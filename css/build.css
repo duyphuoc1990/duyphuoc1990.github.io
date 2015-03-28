@@ -9712,7 +9712,7 @@ li:before {
 .search-btn {
 	font-size: 25px !important;
 	height: 45px;
-	border: 0px;
+	margin-right: 3px!important;
 	display: inline-block !important;
 }
 
