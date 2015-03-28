@@ -1668,7 +1668,7 @@ NEW_WORD_TAB = "newword";
 KANJI_TAB = "kanji";
 GRAMMAR_TAB = "grammar";
 
-HEADER_HEIGHT = 130;
+HEADER_HEIGHT = 125;
 window.isFocused=true;
 
 if (typeof (Storage) == "undefined") {
