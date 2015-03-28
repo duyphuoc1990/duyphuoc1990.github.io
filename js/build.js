@@ -875,8 +875,37 @@ function HistoryData() {
     this.jvremind = [];
     this.index = 0;
     this.maxID = 0;
+    this.loadLocalStore();
 }
 HistoryData.prototype = {
+	loadLocalStore:function(){
+	    // load jvhistory
+	    this.jvhistory = JSON.parse(localStorage.getItem(JVDICT_HISTORY));
+	    if (this.jvhistory == null)
+	        this.jvhistory = [];
+	    
+	    for (var index in this.jvhistory) {
+	        wordObj = this.jvhistory[index];
+	        $("#history-group").prepend(this.makeHisItem(wordObj));
+	    }
+	    // load jvreminder
+	    this.jvremind = JSON.parse(localStorage.getItem(JVDICT_REMIND));
+	    if (this.jvremind == null)
+	        this.jvremind = [];
+	    
+	    for (var index in this.jvremind) {
+	        wordObj = this.jvremind[index];
+	        $("#remind-group").prepend(this.makeHisItem(wordObj, true));
+	    }
+	    // load max
+	    var maxRemind = parseInt(localStorage.getItem(JV_MAX_REMIND));
+	    var maxHistory = parseInt(localStorage.getItem(JV_MAX_HISTORY));
+	    
+	    if (!isNaN(maxRemind) && maxRemind > 0)
+	        MAX_REMIND = maxRemind;
+	    if (!isNaN(maxHistory) && maxHistory > 0)
+	        MAX_HISTORY = maxHistory;
+	},
     findbyID: function(arr, id) {
         for (var index in arr) {
             if (arr[index].id == id)
@@ -1064,6 +1093,37 @@ function AlertWord() {
 	this.count=0;
 }
 AlertWord.prototype = {
+	loadLocalStore:function() {
+	    // load time
+	    var timeShow = parseInt(localStorage.getItem(HIS_TIME_SHOW));
+	    var timeDelay = parseInt(localStorage.getItem(HIS_TIME_DELAY));
+	    if (!isNaN(timeShow) && timeShow > 0)
+	        TIME_SHOW = timeShow;
+	    if (!isNaN(timeDelay) && timeDelay > 0)
+	        TIME_DELAY = timeDelay;
+
+	    // load randomShow flag
+	    var flag = localStorage.getItem(LOG_HISTORY_FLAG);
+	    if (flag == null || flag == "on") {
+	        HISTORY_FLAG = true;
+	    }
+
+	    // load shownotiff flag
+	    var flag = localStorage.getItem(RANDOM_SHOW_FLAG);
+	    if (flag == null || flag == "on") {
+	        RANDOM_FLAG = true;
+	    }
+	    // load loghistory flag
+	    var flag = localStorage.getItem(SHOW_NOTIF_FLAG);
+	    if (flag == null || flag == "on") {
+	        NOTIF_FLAG = true;
+	    }
+	    // load sound flag
+	    var flag = localStorage.getItem(SOUND_REMIND_FLAG);
+	    if (flag == null || flag == "on") {
+	        SOUND_REMIND = true;
+	    }
+	},
     start: function() {
 	var tmp = window.hisData.nextRemind();
 	if(this.nextWord==tmp)
@@ -1247,39 +1307,39 @@ ShowPanel.prototype = {
         });
     }
 };
-
+KANJI_DRAW_RESULT_HEIGHT=45;
+KANJI_DRAW_TOP=104;
+KANJI_DRAW_LEFT=335;
+KANJI_DRAW_WIDTH=615;
+KANJI_DRAW_HEIGHT=445;
 function DrawKanji() {
-    this.canvas;
-    this.context;
     this.data;
     this.started;
     this.lastPoint;
     this.lastLine;
-    this.tool;
     this.curInkTxt;
     this.full_screen = false;
-    this.pad_top = 104;
-    this.pad_left = 335;
-    this.pad_width = 615;
-    this.pad_height = 445;
-}
-;
+    this.pad_top = KANJI_DRAW_TOP;
+    this.pad_left = KANJI_DRAW_LEFT;
+    this.pad_width = KANJI_DRAW_WIDTH;
+    this.pad_height = KANJI_DRAW_HEIGHT;
+    $("#draw-pad").css("zIndex", 101);
+    this.canvas = document.getElementById('kanji-draw');
+    this.context = this.canvas.getContext('2d');
+};
 
 DrawKanji.prototype = {
     initData: function(top, left, width, height) {
         this.data = [];
         this.curInkTxt = "";
-        $("#draw-pad").offset({top: top,left: left});
-        $("#draw-pad").css("zIndex", 101);
+        this.started = false;
         $("#draw-pad").width(width);
         $("#draw-pad").height(height);
+        $("#draw-pad").offset({top: top,left: left});
         $("#kanji-draw").width(width);
-        $("#kanji-draw").height(height - 45);
-        this.started = false;
-        this.canvas = document.getElementById('kanji-draw');
+        $("#kanji-draw").height(height - KANJI_DRAW_RESULT_HEIGHT);
         this.canvas.width = $("#kanji-draw").width();
         this.canvas.height = $("#kanji-draw").height();
-        this.context = this.canvas.getContext('2d');
         this.context.lineWidth = 6;
         this.context.lineJoin = this.context.lineCap = 'round';
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -1374,7 +1434,8 @@ DrawKanji.prototype = {
             data: jsonTxt,
             contentType: "application/json; charset=utf-8",
             success: function(msg) {
-                $("#kanji-result").html(this.makeResulTxt(msg[1][0][1]));
+            	if(msg[0]=="SUCCESS")
+                  $("#kanji-result").html(this.makeResulTxt(msg[1][0][1]));
             }.bind(this)
         });
     },
@@ -1433,6 +1494,7 @@ DrawKanji.prototype = {
         || document.body.clientWidth;
         
         this.initData(0, 0, width, height);
+        $("#full-pad-btn").unbind('click');
         $("#full-pad-btn").click(this.kanjiSmallPad.bind(this));
         $("#full-pad-btn").children("i").removeClass("icon-resize-full-alt");
         $("#full-pad-btn").children("i").addClass("icon-resize-small-alt");
@@ -1440,6 +1502,7 @@ DrawKanji.prototype = {
     },
     kanjiSmallPad: function() {
         this.initData(this.pad_top, this.pad_left, this.pad_width, this.pad_height);
+        $("#full-pad-btn").unbind('click');
         $("#full-pad-btn").click(this.kanjiFullPad.bind(this));
         $("#full-pad-btn").children("i").removeClass("icon-resize-small-alt");
         $("#full-pad-btn").children("i").addClass("icon-resize-full-alt");
@@ -1600,12 +1663,14 @@ SHOW_NOTIF_FLAG = "jvdict-notif-flag";
 SOUND_REMIND_FLAG = "jvdict-reminder-with-sound";
 JV_MAX_REMIND = "jvdict-max-remind";
 JV_MAX_HISTORY = "jvdict-max-history";
+
 TIME_SHOW = 3;
 TIME_DELAY = 60;
 HISTORY_FLAG = false;
 RANDOM_FLAG = false;
 NOTIF_FLAG = false;
 SOUND_REMIND = false;
+
 MAX_REMIND = 15;
 MAX_HISTORY = 100;
 TIME_LOAD_SOUND = 3;
@@ -1615,6 +1680,12 @@ KANJI_TAB = "kanji";
 GRAMMAR_TAB = "grammar";
 
 HEADER_HEIGHT = 130;
+window.isFocused=true;
+
+if (typeof (Storage) == "undefined") {
+    alert("Sorry, your browser does not support Web Storage...");
+    document.location = "http://google.com";
+}
 
 utility = new Utility();
 hisData = new HistoryData();
@@ -1623,74 +1694,10 @@ panel = new ShowPanel();
 drawKanji = new DrawKanji();
 search = new Search();
 
-function loadLocalStore() {
-    if (typeof (Storage) == "undefined") {
-        alert("Sorry, your browser does not support Web Storage...");
-        document.location = "http://google.com";
-    }
-    // load time
-    var timeShow = parseInt(localStorage.getItem(HIS_TIME_SHOW));
-    var timeDelay = parseInt(localStorage.getItem(HIS_TIME_DELAY));
-    if (!isNaN(timeShow) && timeShow > 0)
-        TIME_SHOW = timeShow;
-    if (!isNaN(timeDelay) && timeDelay > 0)
-        TIME_DELAY = timeDelay;
-    // load jvhistory
-    hisData.jvhistory = JSON.parse(localStorage.getItem(JVDICT_HISTORY));
-    if (hisData.jvhistory == null)
-        hisData.jvhistory = [];
-    
-    for (var index in hisData.jvhistory) {
-        wordObj = hisData.jvhistory[index];
-        $("#history-group").prepend(hisData.makeHisItem(wordObj));
-    }
-    // load jvreminder
-    hisData.jvremind = JSON.parse(localStorage.getItem(JVDICT_REMIND));
-    if (hisData.jvremind == null)
-        hisData.jvremind = [];
-    
-    for (var index in hisData.jvremind) {
-        wordObj = hisData.jvremind[index];
-        $("#remind-group").prepend(hisData.makeHisItem(wordObj, true));
-    }
-
-    // load randomShow flag
-    var flag = localStorage.getItem(LOG_HISTORY_FLAG);
-    if (flag == null || flag == "on") {
-        HISTORY_FLAG = true;
-    }
-
-    // load shownotiff flag
-    var flag = localStorage.getItem(RANDOM_SHOW_FLAG);
-    if (flag == null || flag == "on") {
-        RANDOM_FLAG = true;
-    }
-    // load loghistory flag
-    var flag = localStorage.getItem(SHOW_NOTIF_FLAG);
-    if (flag == null || flag == "on") {
-        NOTIF_FLAG = true;
-    }
-    // load sound flag
-    var flag = localStorage.getItem(SOUND_REMIND_FLAG);
-    if (flag == null || flag == "on") {
-        SOUND_REMIND = true;
-    }
-
-    // load time
-    var maxRemind = parseInt(localStorage.getItem(JV_MAX_REMIND));
-    var maxHistory = parseInt(localStorage.getItem(JV_MAX_HISTORY));
-    
-    if (!isNaN(maxRemind) && maxRemind > 0)
-        MAX_REMIND = maxRemind;
-    if (!isNaN(maxHistory) && maxHistory > 0)
-        MAX_HISTORY = maxHistory;
-
-}
 
 window.onload = function() {
     $("#div-main").removeClass("loading-start");
     utility.setHeight();
-    loadLocalStore();
     alertWord.start();
 };
 
@@ -1725,7 +1732,7 @@ $('.tab-control').tabcontrol().bind("tabcontrolchange", function(event, frame) {
     var id = $(frame).attr("id");
     search.changeTab(id);
 });
-window.isFocused=true;
+
 $(window).blur(function(){
   window.isFocused=false;
 });
