@@ -9700,7 +9700,7 @@ li:before {
 
 #word-box {
 	font-size: 25px;
-	width: 536px;
+	width: 538px;
 	height: 45px;
 	border: 0 !important;
 	border-radius: 0 !important;
@@ -9712,7 +9712,7 @@ li:before {
 .search-btn {
 	font-size: 25px !important;
 	height: 45px;
-	margin-right: 3px!important;
+	margin-right: 1px!important;
 	display: inline-block !important;
 }
 
@@ -10013,7 +10013,7 @@ div:hover {
 .icon-delete:hover {
 	color: red;
 }.result-box {
-	width: 670px;
+	width: 672px;
 	padding: 10px;
 	margin-bottom: 10px;
 	margin-top: 4px;
