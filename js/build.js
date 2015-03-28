@@ -1091,6 +1091,7 @@ function AlertWord() {
     this.instance = null;
 	this.nextWord;
 	this.count=0;
+	this.loadLocalStore();
 }
 AlertWord.prototype = {
 	loadLocalStore:function() {
