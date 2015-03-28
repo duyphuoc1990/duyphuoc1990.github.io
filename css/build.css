@@ -171,7 +171,7 @@ div:hover {
 .metro .tab-control .tabs>li>a {
 	background-color: #E0DEB4 !important;
 	text-align: center;
-	padding: 8px 0px !important;
+	padding: 5px 0 9px 0!important
 	border-left: 0 !important;
 }
 
