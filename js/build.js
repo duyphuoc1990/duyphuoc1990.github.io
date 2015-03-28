@@ -1007,21 +1007,17 @@ HistoryData.prototype = {
     delRemind: function(hisID) {
         var index = this.findbyID(this.jvremind, hisID);
         if (index >= 0) {
+        	var word=this.jvremind[index].word;
             this.jvremind.splice(index, 1);
             localStorage.setItem(JVDICT_REMIND, JSON.stringify(this.jvremind));
             $("#history-" + hisID).fadeOut('slow', function() {
                 $(this).remove();
             });
+            //add history
+            this.addHistoryObj(this.makeWordObj(word));
             return true;
         }
         return false;
-    },
-    
-    delAllRemind: function() {
-        for (var index in this.jvremind) {
-            wordObj = this.jvreminde[index];
-            this.delRemind(wordObj.id);
-        }
     },
     
     makeHisItem: function(obj, isRemind) {
@@ -1067,8 +1063,12 @@ HistoryData.prototype = {
         return this.jvremind[this.index];
     },
     
-    getNextID: function() {
-        return ++this.maxID;
+    makeWordObj: function(inputText) {
+        var wordObj = {
+                id: ++this.maxID,
+                word: inputText
+            };
+        return wordObj;
     },
     getHisWord: function(id) {
         var index = this.findbyID(this.jvhistory, id);
@@ -1540,12 +1540,8 @@ Search.prototype = {
                 $("#new-word-ctn").html(utility.makeJaVi(result.data, this.cur_new_word));
                 this.enter_enabled = true;
                 if (HISTORY_FLAG && addRemind && result.found == true) {
-                    var wordObj = {
-                        id: hisData.getNextID(),
-                        word: inputText
-                    };
                     if (this.isWordTyped)
-                        hisData.addHistoryObj(wordObj);
+                        hisData.addHistoryObj(hisData.makeWordObj(inputText));
                     this.isWordTyped = false;
                 }
             }.bind(this),
@@ -1577,12 +1573,8 @@ Search.prototype = {
                 $("#kanji-ctn").html(utility.makeKanji(e.results, this.cur_kanji));
                 this.enter_enabled = true;
                 if (HISTORY_FLAG && addRemind && e.status != 302) {
-                    var wordObj = {
-                        id: hisData.getNextID(),
-                        word: inputText
-                    };
                     if (this.isWordTyped)
-                        hisData.addHistoryObj(wordObj);
+                        hisData.addHistoryObj(hisData.makeWordObj(inputText));
                     this.isWordTyped = false;
                 }
             }.bind(this),
@@ -1611,11 +1603,7 @@ Search.prototype = {
                 $('body').removeClass("loading-search");
                 this.enter_enabled = true;
                 if (HISTORY_FLAG && addRemind && result.indexOf("no results") < 0) {
-                    var wordObj = {
-                        id: hisData.getNextID(),
-                        word: inputText
-                    };
-                    addHistoryObj(wordObj);
+                    addHistoryObj(hisData.makeWordObj(inputText));
                     $("#history-group").html(makeHisItem(wordObj) + $("#history-group").html());
                 }
             }
