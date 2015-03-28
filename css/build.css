@@ -151,7 +151,7 @@ div:hover {
 }
 
 .tabs li a {
-	font-size: 22px;
+	font-size: 21px;
 	width: 226px;
 }
 
@@ -173,6 +173,10 @@ div:hover {
 	text-align: center;
 	padding: 8px 0px !important;
 	border-left: 0 !important;
+}
+
+.metro ul li, .metro ol li {
+  line-height: 19px!important;
 }
 
 .metro .tab-control .tabs>li.active a, .metro .tab-control .tabs>li.active:hover a
