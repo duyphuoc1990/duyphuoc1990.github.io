@@ -935,7 +935,7 @@ HistoryData.prototype = {
         return false;
     },
     
-    addHistory: function(wordObj) {
+    addHistoryObj: function(wordObj) {
         var index = this.findbyText(this.jvremind, wordObj.word);
         if (index >= 0) {
             this.delRemind(this.jvremind[index].id);
@@ -963,7 +963,7 @@ HistoryData.prototype = {
         return true;
     },
     
-    addRemind: function(wordObj) {
+    addRemindObj: function(wordObj) {
         var index = this.findbyText(this.jvremind, wordObj.word);
         if (index >= 0) {
             this.delRemind(this.jvremind[index].id);
@@ -1048,7 +1048,7 @@ HistoryData.prototype = {
             id: ++this.maxID,
             word: string
         };
-        this.addRemind(wordObj);
+        this.addRemindObj(wordObj);
     },
     nextRemind: function() {
         if (this.jvremind.length == 0)
@@ -1152,9 +1152,9 @@ AlertWord.prototype = {
             $("#sound-remind").attr("src", soundURL);
             $("#sound-control").trigger('load');
         }
-        setTimeout(this.notifyMe.bind(this, notifTxt), TIME_LOAD_SOUND*1000);
+        setTimeout(this.notifyShow.bind(this, notifTxt), TIME_LOAD_SOUND*1000);
     },
-    notifyMe: function(notifTxt) {
+    notifyShow: function(notifTxt) {
 		if(NOTIF_FLAG == false)return;
         if (!("Notification" in window)) {
             alert("Trình duyệt này không hỗ trợ nhắc từ, hãy dùng phiên bản mới nhất của Chrome, Firefox!");
@@ -1329,7 +1329,7 @@ function DrawKanji() {
 };
 
 DrawKanji.prototype = {
-    initData: function(top, left, width, height) {
+    initialize: function(top, left, width, height) {
         this.data = [];
         this.curInkTxt = "";
         this.started = false;
@@ -1442,13 +1442,13 @@ DrawKanji.prototype = {
     makeResulTxt: function(array) {
         text = '';
         for (var i = 0; i < array.length; i++) {
-            text += '<div class ="kanji-item" onclick="drawKanji.addKanjiToSearch(\'' + array[i] + '\')">';
+            text += '<div class ="kanji-item" onclick="drawKanji.drawPadSearch(\'' + array[i] + '\')">';
             text += array[i];
             text += '</div>';
         }
         return text;
     },
-    addKanjiToSearch: function(kanji) {
+    drawPadSearch: function(kanji) {
         $("#word-box").val($("#word-box").val() + kanji);
         this.toogleDrawpad();
     },
@@ -1456,7 +1456,7 @@ DrawKanji.prototype = {
         if (this.full_screen)
             this.kanjiFullPad();
         else
-            this.initData(this.pad_top, this.pad_left, this.pad_width, this.pad_height);
+            this.initialize(this.pad_top, this.pad_left, this.pad_width, this.pad_height);
         $("#kanji-result").html("");
     },
     backCanvas: function() {
@@ -1493,7 +1493,7 @@ DrawKanji.prototype = {
         var width = window.innerWidth || document.documentElement.clientWidth 
         || document.body.clientWidth;
         
-        this.initData(0, 0, width, height);
+        this.initialize(0, 0, width, height);
         $("#full-pad-btn").unbind('click');
         $("#full-pad-btn").click(this.kanjiSmallPad.bind(this));
         $("#full-pad-btn").children("i").removeClass("icon-resize-full-alt");
@@ -1501,7 +1501,7 @@ DrawKanji.prototype = {
         this.full_screen = true;
     },
     kanjiSmallPad: function() {
-        this.initData(this.pad_top, this.pad_left, this.pad_width, this.pad_height);
+        this.initialize(this.pad_top, this.pad_left, this.pad_width, this.pad_height);
         $("#full-pad-btn").unbind('click');
         $("#full-pad-btn").click(this.kanjiFullPad.bind(this));
         $("#full-pad-btn").children("i").removeClass("icon-resize-small-alt");
@@ -1545,7 +1545,7 @@ Search.prototype = {
                         word: inputText
                     };
                     if (this.isWordTyped)
-                        hisData.addHistory(wordObj);
+                        hisData.addHistoryObj(wordObj);
                     this.isWordTyped = false;
                 }
             }.bind(this),
@@ -1582,7 +1582,7 @@ Search.prototype = {
                         word: inputText
                     };
                     if (this.isWordTyped)
-                        hisData.addHistory(wordObj);
+                        hisData.addHistoryObj(wordObj);
                     this.isWordTyped = false;
                 }
             }.bind(this),
@@ -1615,7 +1615,7 @@ Search.prototype = {
                         id: hisData.getNextID(),
                         word: inputText
                     };
-                    addHistory(wordObj);
+                    addHistoryObj(wordObj);
                     $("#history-group").html(makeHisItem(wordObj) + $("#history-group").html());
                 }
             }
