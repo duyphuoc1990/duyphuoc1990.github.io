@@ -10008,7 +10008,7 @@ div:hover {
 	text-align: center;
 	color: #c0392b;
 	cursor: pointer;
-	font-weight: italic;
+	font-size: 15px;
 }
 
 .icon-delete:hover {
