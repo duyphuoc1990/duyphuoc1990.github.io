@@ -9714,6 +9714,7 @@ li:before {
 	height: 45px;
 	margin-right: 1px!important;
 	display: inline-block !important;
+	background-color: #ecf0f1!important;
 }
 
 .dropdown-toggle {
