@@ -627,13 +627,13 @@ a {
 	font-style: italic
 }
 .metro #font .segoe {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro #font .segoe-bold {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro #font .segoe-light {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro #font .cambria {
 	font-family: 'Cambria_', 'PT Serif Caption', Verdana, Arial, Helvetica, sans-serif
@@ -648,7 +648,7 @@ a {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 .metro .header, .metro .subheader {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	color: #000;
 	letter-spacing: .00em
@@ -663,7 +663,7 @@ a {
 	letter-spacing: .01em
 }
 .metro .subheader-secondary {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	letter-spacing: .00em;
 	font-size: 2.5 rem;
@@ -674,7 +674,7 @@ a {
 	line-height: 2.2 rem
 }
 .metro .item-title {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	color: #000;
 	font-size: 1.6 rem;
@@ -682,7 +682,7 @@ a {
 	letter-spacing: .02em
 }
 .metro .item-title-secondary {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	font-size: 1.6 rem;
 	line-height: 1.6 rem;
@@ -692,7 +692,7 @@ a {
 	line-height: 1.4 rem
 }
 .metro .navigation {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: normal;
 	font-style: normal;
 	color: #000;
@@ -701,7 +701,7 @@ a {
 	letter-spacing: .02em
 }
 .metro .body-text {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: normal;
 	font-style: normal;
 	color: #000;
@@ -710,7 +710,7 @@ a {
 	letter-spacing: .02em
 }
 .metro .code-text {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: normal;
 	font-style: normal;
 	color: #000;
@@ -720,14 +720,14 @@ a {
 	font-family: 'Courier New', monospace
 }
 .metro .tertiary-text {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	color: #000;
 	font-size: 1.3 rem;
 	line-height: 1.5 rem;
 	font-weight: normal !important
 }
 .metro .tertiary-text-secondary {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 1.3 rem;
 	line-height: 1.5 rem;
 	font-weight: normal !important;
@@ -741,7 +741,7 @@ a {
 	line-height: 2rem
 }
 .metro .menu-title {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	color: #000;
 	letter-spacing: .00em;
@@ -751,7 +751,7 @@ a {
 	font-size: 4rem
 }
 .metro .menu-item {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	letter-spacing: .00em;
 	font-size: 2.5 rem;
@@ -762,7 +762,7 @@ a {
 	font-size: 2.2 rem
 }
 .metro .menu-item-secondary {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	color: #000;
 	font-size: 1.6 rem;
@@ -777,7 +777,7 @@ a {
 	margin: 10px 0
 }
 .metro h1 {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	color: #000;
 	letter-spacing: .00em;
@@ -785,7 +785,7 @@ a {
 	line-height: 4.8 rem
 }
 .metro h2 {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	color: #000;
 	letter-spacing: .00em;
@@ -794,7 +794,7 @@ a {
 	letter-spacing: .01em
 }
 .metro h3 {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	letter-spacing: .00em;
 	font-size: 2.5 rem;
@@ -806,7 +806,7 @@ a {
 	font-weight: bold
 }
 .metro h4 {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	color: #000;
 	font-size: 1.6 rem;
@@ -814,7 +814,7 @@ a {
 	letter-spacing: .02em
 }
 .metro h5 {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	font-size: 1.6 rem;
 	line-height: 1.6 rem;
@@ -824,7 +824,7 @@ a {
 	line-height: 1.4 rem
 }
 .metro h6 {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: normal;
 	font-style: normal;
 	color: #000;
@@ -856,13 +856,13 @@ a {
 	color: rgba(45,173,237,0.6)
 }
 .metro div, .metro span, .metro p {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: normal;
 	font-style: normal
 }
 .metro p {
 	margin: 0 0 7pt;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: normal;
 	font-style: normal;
 	color: #000;
@@ -871,7 +871,7 @@ a {
 	letter-spacing: .02em
 }
 .metro strong {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold
 }
 .metro .text-muted {
@@ -895,7 +895,7 @@ a {
 	cursor: help
 }
 .metro address {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: normal;
 	font-style: normal;
 	margin-bottom: 7pt
@@ -943,7 +943,7 @@ a {
 .metro ul, .metro ol {
 	margin-left: 5px;
 	padding-left: 15px;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: normal;
 	font-style: normal;
 	color: #000;
@@ -996,7 +996,7 @@ a {
 	line-height: 20px
 }
 .metro dl dt {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro dl dd {
 	margin-left: 15px
@@ -1014,7 +1014,7 @@ a {
 	margin-left: 180px
 }
 .metro .prettyprint * {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: normal;
 	font-style: normal;
 	color: #000;
@@ -1058,7 +1058,7 @@ a {
 	margin-right: 20px
 }
 .metro .page .page-header .page-header-content .branding .brand-title {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	color: #000;
 	letter-spacing: .00em;
@@ -1068,7 +1068,7 @@ a {
 	display: block
 }
 .metro .page .page-header .page-header-content .branding .brand-slogan {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	font-size: 1.6 rem;
 	line-height: 1.6 rem;
@@ -1078,7 +1078,7 @@ a {
 	line-height: 1.4 rem;
 	font-weight: normal;
 	font-style: normal;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	display: block
 }
 .metro .page .page-header .page-header-content .branding .brand-title, .metro .page .page-header .page-header-content .branding .brand-slogan {
@@ -1438,7 +1438,7 @@ a {
 	cursor: pointer;
 	display: inline-block;
 	outline: 0;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px;
 	line-height: 16px;
 	margin: auto
@@ -1521,7 +1521,7 @@ a {
 	cursor: pointer;
 	display: inline-block;
 	outline: 0;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px;
 	line-height: 16px;
 	margin: auto
@@ -1612,7 +1612,7 @@ a {
 	cursor: pointer;
 	display: inline-block;
 	outline: 0;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px;
 	line-height: 16px;
 	margin: auto;
@@ -1697,7 +1697,7 @@ a {
 }
 .metro .command-button small {
 	display: block;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 1.3 rem;
 	line-height: 1.5 rem;
 	font-weight: normal !important;
@@ -1812,7 +1812,7 @@ a {
 	cursor: pointer;
 	display: inline-block;
 	outline: 0;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px;
 	line-height: 16px;
 	margin: auto;
@@ -1936,7 +1936,7 @@ a {
 	border-radius: 0;
 	cursor: pointer;
 	outline: 0;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px;
 	line-height: 16px;
 	margin: auto;
@@ -2039,7 +2039,7 @@ a {
 	min-width: 10px;
 	text-align: center;
 	vertical-align: middle;
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro .shortcut:hover {
 	border-color: #e51400
@@ -2537,7 +2537,7 @@ a {
 	cursor: pointer;
 	display: inline-block;
 	outline: 0;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px;
 	line-height: 16px;
 	margin: auto
@@ -2717,7 +2717,7 @@ a {
 	padding: 0;
 	vertical-align: baseline;
 	position: relative;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro #menu .item-horizontal {
 	display: inline-block;
@@ -2725,7 +2725,7 @@ a {
 	padding: 0;
 	vertical-align: baseline;
 	position: relative;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro .vertical-menu {
 	margin: 0;
@@ -2738,12 +2738,12 @@ a {
 	padding: 0;
 	vertical-align: baseline;
 	position: relative;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro .vertical-menu li a {
 	display: block;
 	text-decoration: none;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	letter-spacing: .00em;
 	font-size: 2.5 rem;
@@ -2755,7 +2755,7 @@ a {
 	color: inherit
 }
 .metro .vertical-menu li.title {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	color: #000;
 	letter-spacing: .00em;
@@ -2773,7 +2773,7 @@ a {
 }
 .metro .vertical-menu.compact li.title {
 	margin-bottom: 10px;
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	color: #000;
 	font-size: 1.6 rem;
@@ -2787,7 +2787,7 @@ a {
 	margin-left: 15px
 }
 .metro .vertical-menu ul.secondary li a {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	color: #000;
 	font-size: 1.6 rem;
@@ -2810,12 +2810,12 @@ a {
 	padding: 0;
 	vertical-align: baseline;
 	position: relative;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro .horizontal-menu li a {
 	display: inline-block;
 	text-decoration: none;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	letter-spacing: .00em;
 	font-size: 2.5 rem;
@@ -2863,12 +2863,12 @@ a {
 	padding: 0;
 	vertical-align: baseline;
 	position: relative;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro .side-menu li a {
 	display: block;
 	text-decoration: none;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	letter-spacing: .00em;
 	font-size: 2.5 rem;
@@ -2880,7 +2880,7 @@ a {
 	color: inherit
 }
 .metro .side-menu li.title {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	color: #000;
 	letter-spacing: .00em;
@@ -2898,7 +2898,7 @@ a {
 }
 .metro .side-menu.compact li.title {
 	margin-bottom: 10px;
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	color: #000;
 	font-size: 1.6 rem;
@@ -2912,7 +2912,7 @@ a {
 	margin-left: 15px
 }
 .metro .side-menu ul.secondary li a {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	color: #000;
 	font-size: 1.6 rem;
@@ -2993,12 +2993,12 @@ a {
 	padding: 0;
 	vertical-align: baseline;
 	position: relative;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro .dropdown-menu li a {
 	display: block;
 	text-decoration: none;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	letter-spacing: .00em;
 	font-size: 2.5 rem;
@@ -3010,7 +3010,7 @@ a {
 	color: inherit
 }
 .metro .dropdown-menu li.title {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	color: #000;
 	letter-spacing: .00em;
@@ -3028,7 +3028,7 @@ a {
 }
 .metro .dropdown-menu.compact li.title {
 	margin-bottom: 10px;
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	color: #000;
 	font-size: 1.6 rem;
@@ -3042,7 +3042,7 @@ a {
 	margin-left: 15px
 }
 .metro .dropdown-menu ul.secondary li a {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	color: #000;
 	font-size: 1.6 rem;
@@ -3293,7 +3293,7 @@ a {
 	padding: 15px;
 	line-height: 15px;
 	color: inherit;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px;
 	position: relative
 }
@@ -3412,7 +3412,7 @@ a {
 	padding: 15px;
 	line-height: 15px;
 	color: inherit;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px
 }
 .metro .navigation-bar .element-menu > li > a.dropdown-toggle, .metro .navbar .element-menu > li > a.dropdown-toggle {
@@ -3588,7 +3588,7 @@ a {
 .metro .tile-area .user-id .user-id-name .first-name, .metro .tile-area .user-id .user-id-name .last-name {
 	display: block;
 	color: inherit;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	line-height: 12pt
 }
 .metro .tile-area .user-id .user-id-name .first-name {
@@ -3953,7 +3953,7 @@ a {
 	color: #fff
 }
 .metro .tile-group .tile-group-title {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 18px;
 	line-height: 20px;
 	position: absolute;
@@ -4194,10 +4194,10 @@ a {
 	margin-left: -18.66666667px
 }
 .metro .tile {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro .tile * {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro .tile.scale {
 	-webkit-transform: scale(0.98);
@@ -4628,7 +4628,7 @@ li:before {
 	cursor: pointer;
 	display: inline-block;
 	outline: 0;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px;
 	line-height: 16px;
 	margin: auto;
@@ -4907,7 +4907,7 @@ li:before {
 }
 .metro .sidebar > ul li.title {
 	padding: 20px 20px 10px 20px;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	letter-spacing: .00em;
 	font-size: 2.5 rem;
@@ -4982,12 +4982,12 @@ li:before {
 	padding: 0;
 	vertical-align: baseline;
 	position: relative;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 }
 .metro .sidebar > ul ul li a {
 	display: block;
 	text-decoration: none;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	letter-spacing: .00em;
 	font-size: 2.5 rem;
@@ -4999,7 +4999,7 @@ li:before {
 	color: inherit
 }
 .metro .sidebar > ul ul li.title {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	color: #000;
 	letter-spacing: .00em;
@@ -5017,7 +5017,7 @@ li:before {
 }
 .metro .sidebar > ul ul.compact li.title {
 	margin-bottom: 10px;
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	color: #000;
 	font-size: 1.6 rem;
@@ -5031,7 +5031,7 @@ li:before {
 	margin-left: 15px
 }
 .metro .sidebar > ul ul ul.secondary li a {
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	color: #000;
 	font-size: 1.6 rem;
@@ -5469,7 +5469,7 @@ li:before {
 	top: -40px;
 	min-width: 30px;
 	text-align: center;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px;
 	box-shadow: 0 2px 6px rgba(0,0,0,0.3), 0 3px 8px rgba(0,0,0,0.2);
 	display: none
@@ -5974,7 +5974,7 @@ li:before {
 .metro .listview-outlook .list .list-content {
 	margin: 2px 0;
 	padding: 2px 20px;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 16px;
 	color: inherit;
 	border-left: 3px transparent solid
@@ -6025,7 +6025,7 @@ li:before {
 	margin-bottom: 2px;
 	background-color: #f0f0f0;
 	padding: 4px 20px;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 11px;
 	font-weight: bold;
 	color: #333;
@@ -6805,7 +6805,7 @@ li:before {
 	cursor: pointer
 }
 .metro .streamer .streams .stream .stream-title {
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 12px;
 	line-height: 12px
 }
@@ -6813,7 +6813,7 @@ li:before {
 	position: absolute;
 	left: 5px;
 	bottom: 5px;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 11px;
 	line-height: 11px
 }
@@ -6921,7 +6921,7 @@ li:before {
 	position: relative;
 	width: 39px;
 	padding: 8px 4px;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 12px;
 	color: #fff;
 	line-height: 12px
@@ -6935,7 +6935,7 @@ li:before {
 }
 .metro .streamer .events .event-stream .event .event-content-data .title {
 	position: relative;
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px;
 	line-height: 14px;
 	margin: 3px 0 0;
@@ -6943,7 +6943,7 @@ li:before {
 }
 .metro .streamer .events .event-stream .event .event-content-data .subtitle {
 	position: relative;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 10px;
 	line-height: 10px;
 	margin: 0;
@@ -6955,7 +6955,7 @@ li:before {
 	display: block;
 	top: 36px;
 	margin-right: 4px;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 11px;
 	line-height: 11px;
 	color: #999
@@ -7120,7 +7120,7 @@ li:before {
 	display: block;
 	position: relative;
 	min-width: 220px;
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	color: #1d1d1d;
 	padding: 10px;
 	margin: 2px 2px 2px 0
@@ -7253,7 +7253,7 @@ li:before {
 	cursor: pointer;
 	display: inline-block;
 	outline: 0;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px;
 	line-height: 16px;
 	margin: auto;
@@ -7402,7 +7402,7 @@ li:before {
 	cursor: pointer;
 	display: inline-block;
 	outline: 0;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-size: 14px;
 	line-height: 16px;
 	margin: auto;
@@ -7500,7 +7500,7 @@ li:before {
 	padding: 10px;
 	background-color: #eee;
 	width: 100%;
-	font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: 300;
 	letter-spacing: .00em;
 	font-size: 2.5 rem;
@@ -7567,7 +7567,7 @@ li:before {
 	top: 30px;
 	color: #999 !important;
 	margin: 5px 10px;
-	font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: bold;
 	font-size: 1.6 rem;
 	line-height: 1.6 rem;
@@ -7582,7 +7582,7 @@ li:before {
 	transform: rotate(-90deg)
 }
 .metro code, .metro .code {
-	font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	font-weight: normal;
 	font-style: normal;
 	color: #000;
@@ -9949,7 +9949,6 @@ div:hover {
 	background-color: #D8D69C;
 	overflow: hidden;
 	line-height: 30px;
-	font-family: "Segoe UI", "Meiryo UI", Arial;
 	border-radius: 16px 0px 0px 16px !important;
 }
 
