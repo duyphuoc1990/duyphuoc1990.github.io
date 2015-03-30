@@ -9948,7 +9948,8 @@ div:hover {
 	padding-right: 3px;
 	background-color: #D8D69C;
 	overflow: hidden;
-	border-radius: 13px !important;
+	line-height: 30px;
+	font-family: "Segoe UI", "Meiryo UI", Arial;
 	border-radius: 16px 0px 0px 16px !important;
 }
 
