@@ -9963,9 +9963,8 @@ div:hover {
 
 .history-item-text {
 	width: 250px;
-	height: 44px;
 	font-size: 20px;
-	line-height: 30px;
+	line-height: 31px;
 	padding: 7px;
 	cursor: pointer;
 	display: inline-block;
