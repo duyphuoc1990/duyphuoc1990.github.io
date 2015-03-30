@@ -9948,7 +9948,6 @@ div:hover {
 	padding-right: 3px;
 	background-color: #D8D69C;
 	overflow: hidden;
-	line-height: 30px;
 	border-radius: 16px 0px 0px 16px !important;
 }
 
@@ -9964,9 +9963,9 @@ div:hover {
 
 .history-item-text {
 	width: 250px;
-	height: 43px;
-	font-size: 22px;
-	padding: 7px;
+	height: 100%;
+	font-size: 20px;
+	line-height: 100%;
 	cursor: pointer;
 	display: inline-block;
 	word-wrap: break-word;
