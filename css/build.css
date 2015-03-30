@@ -9645,7 +9645,7 @@ li:before {
 }body {
 	min-width: 1000px !important;
 	background-color: rgb(230, 231, 245);
-	font-family: "meiryo UI", Helvetica, Arial, sans-serif;
+	font-family: 'Segoe UI', 'Meiryo UI', Arial;
 	overflow: hidden;
 }
 
@@ -10138,7 +10138,7 @@ div:hover {
 
 .detail {
 	color: #2F32FF !important;
-	font-size: 18px !important;
+	font-size: 19px !important;
 	margin-left: 18px !important;
 	line-height: 26px !important;
 }
