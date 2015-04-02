@@ -977,7 +977,6 @@ function AlertWord() {
 	this.count=0;
 	this.loadLocalStore();
 }
-HISTORY_ITEM_HEIGHT=44;
 AlertWord.prototype = {
 	loadLocalStore:function() {
 	    // load time
@@ -1072,7 +1071,7 @@ AlertWord.prototype = {
         	var hisID=hisData.jvremind[index].id;
         	if(index>=0){
         	    var pos= $("#history-"+hisID).position();
-            	    $("#div-history").slimScroll({ scrollTo: (pos.top-HISTORY_ITEM_HEIGHT)+'px', animate: true });
+            	    $("#div-history").slimScroll({ scrollTo: pos.top+'px', animate: true });
         	}
             };
             this.instance.onerror = function() {
