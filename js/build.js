@@ -1068,10 +1068,10 @@ AlertWord.prototype = {
                 search.getResult(notifTxt, false);
                 alert("Chào mừng trở lại với JaviDict!");
                 var index=hisData.findbyText(hisData.jvremind, notifTxt);
-        	var hisID=hisData.jvremind[index].id;
         	if(index>=0){
+         	    var hisID=hisData.jvremind[index].id;
         	    var pos= $("#history-"+hisID).position();
-            	    $("#div-history").slimScroll({ scrollTo: pos.top+'px', animate: true });
+            	    $("#div-history").slimScroll({ scrollTop: pos.top+'px', animate: true });
         	}
             };
             this.instance.onerror = function() {
