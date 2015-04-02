@@ -1071,7 +1071,7 @@ AlertWord.prototype = {
         	if(index>=0){
          	    var hisID=hisData.jvremind[index].id;
         	    var pos= $("#history-"+hisID).position();
-            	    $("#div-history").slimScroll({ scrollTop: pos.top+'px', animate: true });
+            	    $("#div-history").slimScroll({ scrollBy: pos.top+'px', animate: true });
         	}
             };
             this.instance.onerror = function() {
