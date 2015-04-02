@@ -9713,7 +9713,7 @@ li:before {
 	font-size: 25px !important;
 	height: 45px;
 	margin-right: 1px !important;
-	margin-left: 1px!important;
+	margin-left: 1px !important;
 	display: inline-block !important;
 	background-color: #ecf0f1 !important;
 }
@@ -9857,13 +9857,14 @@ div:hover {
 .search-bar .icon-bell {
 	margin-left: -22px;
 	float: none !important;
-	color: grey !important;
+	color: #bdc3c7 !important;
 	font-size: 20px !important;
+	position: absolute;
+	margin-top: -3px;
 }
 .search-bar .icon-bell:hover {
 	color: #f39c12 !important;
 }
-
 
 #draw-pad {
 	position: absolute;
