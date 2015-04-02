@@ -9705,16 +9705,17 @@ li:before {
 	border: 0 !important;
 	border-radius: 0 !important;
 	margin-right: -5px !important;
-	padding: 5px;
+	padding: 5px 30px 5px 5px;
 	display: inline-block;
 }
 
 .search-btn {
 	font-size: 25px !important;
 	height: 45px;
-	margin-right: 1px!important;
+	margin-right: 1px !important;
+	margin-left: 1px!important;
 	display: inline-block !important;
-	background-color: #ecf0f1!important;
+	background-color: #ecf0f1 !important;
 }
 
 .dropdown-toggle {
@@ -9761,8 +9762,7 @@ div:hover {
 	float: right;
 }
 
-.element, .element-divider, .navigation-bar, .navigation-bar-content,
-	.dropdown-toggle {
+.element, .element-divider, .navigation-bar, .navigation-bar-content, .dropdown-toggle {
 	height: 30px !important;
 	line-height: 30px !important;
 	font-size: 16px !important;
@@ -9813,19 +9813,18 @@ div:hover {
 	border: 0 !important;
 }
 
-.metro .tab-control .tabs>li>a {
+.metro .tab-control .tabs > li > a {
 	background-color: #E0DEB4 !important;
 	text-align: center;
-	padding: 5px 0 9px 0!important;
+	padding: 5px 0 9px 0 !important;
 	border-left: 0 !important;
 }
 
 .metro ul li, .metro ol li {
-  line-height: 19px!important;
+	line-height: 19px !important;
 }
 
-.metro .tab-control .tabs>li.active a, .metro .tab-control .tabs>li.active:hover a
-	{
+.metro .tab-control .tabs > li.active a, .metro .tab-control .tabs > li.active:hover a {
 	border-top: 0 !important;
 	background-color: #4285F4 !important;
 	color: white !important;
@@ -9841,8 +9840,7 @@ div:hover {
 	width: 400px;
 	margin-left: -200px;
 	margin-top: -125px;
-	background: rgba(255, 255, 255, .8) url('../images/loader_icon.gif')
-		170px 110px no-repeat;
+	background: rgba(255, 255, 255, .8) url('../images/loader_icon.gif') 170px 110px no-repeat;
 	text-align: center;
 	padding-top: 60px;
 	color: #95a5a6;
@@ -9855,7 +9853,19 @@ div:hover {
 
 .loading-search .modal-search {
 	display: block;
-}#draw-pad {
+}
+.search-bar .icon-bell {
+	margin-left: -22px;
+	float: none !important;
+	color: grey !important;
+	font-size: 20px !important;
+}
+.search-bar .icon-bell:hover {
+	color: #f39c12 !important;
+}
+
+
+#draw-pad {
 	position: absolute;
 	top: 0;
 	left: 0;
