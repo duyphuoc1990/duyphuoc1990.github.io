@@ -977,6 +977,7 @@ function AlertWord() {
 	this.count=0;
 	this.loadLocalStore();
 }
+HISTORY_ITEM_HEIGHT=44;
 AlertWord.prototype = {
 	loadLocalStore:function() {
 	    // load time
@@ -1067,6 +1068,12 @@ AlertWord.prototype = {
                 $("#word-box").val(notifTxt);
                 search.getResult(notifTxt, false);
                 alert("Chào mừng trở lại với JaviDict!");
+                var index=hisData.findbyText(hisData.jvremind, notifTxt);
+        	var hisID=hisData.jvremind[index].id;
+        	if(index>=0){
+        	    var pos= $("#history-"+hisID).position();
+            	    $("#div-history").slimScroll({ scrollTo: (pos.top-HISTORY_ITEM_HEIGHT)+'px', animate: true });
+        	}
             };
             this.instance.onerror = function() {
             };
