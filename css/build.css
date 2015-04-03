@@ -9865,7 +9865,20 @@ div:hover {
 .search-bar .icon-bell:hover {
 	color: #f39c12 !important;
 }
-
+#notif-change {
+	position: fixed;
+	right: 0px;
+	top: 189px;
+	width: 295px;
+	height: 84px;
+	color: white;
+	background-color: rgb(66, 133, 244);
+	font-size: 20px;
+	padding: 12px;
+	word-wrap: break-word;
+	overflow: hidden;
+	display: none
+}
 #draw-pad {
 	position: absolute;
 	top: 0;
