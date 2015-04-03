@@ -1068,9 +1068,11 @@ AlertWord.prototype = {
             this.instance.onclick = function() {
                 $("#word-box").val(notifTxt);
                 search.getResult(notifTxt, false);
-                window.isFocused=true;
-                if(window.isFocused==false)
+                
+                if(window.isFocused==false){
                    alert("Chào mừng trở lại với JaviDict!");
+                   window.isFocused=true;
+                }
                 var index=hisData.findbyText(hisData.jvremind, notifTxt);
         	if(index>=0){
          	    var hisID=hisData.jvremind[index].id;
