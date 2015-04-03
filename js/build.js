@@ -928,7 +928,9 @@ HistoryData.prototype = {
             id: ++this.maxID,
             word: string
         };
-        this.addRemindObj(wordObj);
+        if(this.addRemindObj(wordObj)){
+        	notifChange.show(string, 2000);
+        }
     },
     nextRemind: function() {
         if (this.jvremind.length == 0)
@@ -1067,7 +1069,8 @@ AlertWord.prototype = {
                 $("#word-box").val(notifTxt);
                 search.getResult(notifTxt, false);
                 window.isFocused=true;
-                alert("Chào mừng trở lại với JaviDict!");
+                if(window.isFocused==false)
+                   alert("Chào mừng trở lại với JaviDict!");
                 var index=hisData.findbyText(hisData.jvremind, notifTxt);
         	if(index>=0){
          	    var hisID=hisData.jvremind[index].id;
@@ -1090,8 +1093,8 @@ AlertWord.prototype = {
 function NotifChange(){}
 NotifChange.prototype={
 	show:function(content, msecond){
-		$("#notif-change").html("Ä‘Ã£ thÃªm vÃ o nháº¯c tá»«: '"+content+"'");
 		$("#notif-change").show("slow");
+		$("#notif-change").html("Đã thêm vào Nhắc từ:<br/>"+content+"");
 		setTimeout(this.hide, msecond);
 	},
 	hide:function(){

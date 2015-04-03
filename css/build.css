@@ -9700,7 +9700,7 @@ li:before {
 
 #word-box {
 	font-size: 25px;
-	width: 539px;
+	width: 537px;
 	height: 45px;
 	border: 0 !important;
 	border-radius: 0 !important;
@@ -9861,6 +9861,7 @@ div:hover {
 	font-size: 20px !important;
 	position: absolute;
 	margin-top: -3px;
+	height: 20px;
 }
 .search-bar .icon-bell:hover {
 	color: #f39c12 !important;
@@ -9870,10 +9871,11 @@ div:hover {
 	right: 0px;
 	top: 189px;
 	width: 295px;
-	height: 84px;
+	height: 81px;
 	color: white;
 	background-color: rgb(66, 133, 244);
 	font-size: 20px;
+	line-height: 32px;
 	padding: 12px;
 	word-wrap: break-word;
 	overflow: hidden;
