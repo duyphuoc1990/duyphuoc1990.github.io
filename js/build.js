@@ -1093,6 +1093,7 @@ AlertWord.prototype = {
     }
 }
 function NotifChange(){}
+
 NotifChange.prototype={
 	show:function(content, msecond){
 		$("#notif-change").show("slow");

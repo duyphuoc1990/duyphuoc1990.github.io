@@ -9856,12 +9856,11 @@ div:hover {
 }
 .search-bar .icon-bell {
 	margin-left: -22px;
+	margin-top: -3px;
+	height: 20px;
 	float: none !important;
 	color: #bdc3c7 !important;
 	font-size: 20px !important;
-	position: absolute;
-	margin-top: -3px;
-	height: 20px;
 }
 .search-bar .icon-bell:hover {
 	color: #f39c12 !important;
