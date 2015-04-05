@@ -1067,6 +1067,7 @@ AlertWord.prototype = {
             
             this.instance.onclick = function() {
                 $("#word-box").val(notifTxt);
+                search.isWordTyped = false;
                 search.getResult(notifTxt, false);
                 
                 if(window.isFocused==false){
@@ -1520,7 +1521,6 @@ Search.prototype = {
         });
     },
     loadWord: function(hisID, isRemind) {
-        this.isWordTyped = false;
         var word;
         if (isRemind != true) {
             word = hisData.getHisWord(hisID);
@@ -1529,6 +1529,7 @@ Search.prototype = {
         }
         if (word != null) {
             $("#word-box").val(word);
+            this.isWordTyped = false;
             this.getResult(word, false);
         }
     },
