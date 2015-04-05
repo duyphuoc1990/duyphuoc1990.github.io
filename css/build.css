@@ -9856,7 +9856,7 @@ div:hover {
 }
 .search-bar .icon-bell {
 	margin-left: -22px;
-	margin-top: -3px;
+	padding: 0px;
 	height: 20px;
 	float: none !important;
 	color: #bdc3c7 !important;
