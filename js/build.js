@@ -6,355 +6,370 @@
 (function(e,t){var i=0,s=Array.prototype.slice,n=e.cleanData;e.cleanData=function(t){for(var i,s=0;null!=(i=t[s]);s++)try{e(i).triggerHandler("remove")}catch(a){}n(t)},e.widget=function(i,s,n){var a,r,o,h,l={},u=i.split(".")[0];i=i.split(".")[1],a=u+"-"+i,n||(n=s,s=e.Widget),e.expr[":"][a.toLowerCase()]=function(t){return!!e.data(t,a)},e[u]=e[u]||{},r=e[u][i],o=e[u][i]=function(e,i){return this._createWidget?(arguments.length&&this._createWidget(e,i),t):new o(e,i)},e.extend(o,r,{version:n.version,_proto:e.extend({},n),_childConstructors:[]}),h=new s,h.options=e.widget.extend({},h.options),e.each(n,function(i,n){return e.isFunction(n)?(l[i]=function(){var e=function(){return s.prototype[i].apply(this,arguments)},t=function(e){return s.prototype[i].apply(this,e)};return function(){var i,s=this._super,a=this._superApply;return this._super=e,this._superApply=t,i=n.apply(this,arguments),this._super=s,this._superApply=a,i}}(),t):(l[i]=n,t)}),o.prototype=e.widget.extend(h,{widgetEventPrefix:r?h.widgetEventPrefix:i},l,{constructor:o,namespace:u,widgetName:i,widgetFullName:a}),r?(e.each(r._childConstructors,function(t,i){var s=i.prototype;e.widget(s.namespace+"."+s.widgetName,o,i._proto)}),delete r._childConstructors):s._childConstructors.push(o),e.widget.bridge(i,o)},e.widget.extend=function(i){for(var n,a,r=s.call(arguments,1),o=0,h=r.length;h>o;o++)for(n in r[o])a=r[o][n],r[o].hasOwnProperty(n)&&a!==t&&(i[n]=e.isPlainObject(a)?e.isPlainObject(i[n])?e.widget.extend({},i[n],a):e.widget.extend({},a):a);return i},e.widget.bridge=function(i,n){var a=n.prototype.widgetFullName||i;e.fn[i]=function(r){var o="string"==typeof r,h=s.call(arguments,1),l=this;return r=!o&&h.length?e.widget.extend.apply(null,[r].concat(h)):r,o?this.each(function(){var s,n=e.data(this,a);return n?e.isFunction(n[r])&&"_"!==r.charAt(0)?(s=n[r].apply(n,h),s!==n&&s!==t?(l=s&&s.jquery?l.pushStack(s.get()):s,!1):t):e.error("no such method '"+r+"' for "+i+" widget instance"):e.error("cannot call methods on "+i+" prior to initialization; "+"attempted to call method '"+r+"'")}):this.each(function(){var t=e.data(this,a);t?t.option(r||{})._init():e.data(this,a,new n(r,this))}),l}},e.Widget=function(){},e.Widget._childConstructors=[],e.Widget.prototype={widgetName:"widget",widgetEventPrefix:"",defaultElement:"<div>",options:{disabled:!1,create:null},_createWidget:function(t,s){s=e(s||this.defaultElement||this)[0],this.element=e(s),this.uuid=i++,this.eventNamespace="."+this.widgetName+this.uuid,this.options=e.widget.extend({},this.options,this._getCreateOptions(),t),this.bindings=e(),this.hoverable=e(),this.focusable=e(),s!==this&&(e.data(s,this.widgetFullName,this),this._on(!0,this.element,{remove:function(e){e.target===s&&this.destroy()}}),this.document=e(s.style?s.ownerDocument:s.document||s),this.window=e(this.document[0].defaultView||this.document[0].parentWindow)),this._create(),this._trigger("create",null,this._getCreateEventData()),this._init()},_getCreateOptions:e.noop,_getCreateEventData:e.noop,_create:e.noop,_init:e.noop,destroy:function(){this._destroy(),this.element.unbind(this.eventNamespace).removeData(this.widgetName).removeData(this.widgetFullName).removeData(e.camelCase(this.widgetFullName)),this.widget().unbind(this.eventNamespace).removeAttr("aria-disabled").removeClass(this.widgetFullName+"-disabled "+"ui-state-disabled"),this.bindings.unbind(this.eventNamespace),this.hoverable.removeClass("ui-state-hover"),this.focusable.removeClass("ui-state-focus")},_destroy:e.noop,widget:function(){return this.element},option:function(i,s){var n,a,r,o=i;if(0===arguments.length)return e.widget.extend({},this.options);if("string"==typeof i)if(o={},n=i.split("."),i=n.shift(),n.length){for(a=o[i]=e.widget.extend({},this.options[i]),r=0;n.length-1>r;r++)a[n[r]]=a[n[r]]||{},a=a[n[r]];if(i=n.pop(),s===t)return a[i]===t?null:a[i];a[i]=s}else{if(s===t)return this.options[i]===t?null:this.options[i];o[i]=s}return this._setOptions(o),this},_setOptions:function(e){var t;for(t in e)this._setOption(t,e[t]);return this},_setOption:function(e,t){return this.options[e]=t,"disabled"===e&&(this.widget().toggleClass(this.widgetFullName+"-disabled ui-state-disabled",!!t).attr("aria-disabled",t),this.hoverable.removeClass("ui-state-hover"),this.focusable.removeClass("ui-state-focus")),this},enable:function(){return this._setOption("disabled",!1)},disable:function(){return this._setOption("disabled",!0)},_on:function(i,s,n){var a,r=this;"boolean"!=typeof i&&(n=s,s=i,i=!1),n?(s=a=e(s),this.bindings=this.bindings.add(s)):(n=s,s=this.element,a=this.widget()),e.each(n,function(n,o){function h(){return i||r.options.disabled!==!0&&!e(this).hasClass("ui-state-disabled")?("string"==typeof o?r[o]:o).apply(r,arguments):t}"string"!=typeof o&&(h.guid=o.guid=o.guid||h.guid||e.guid++);var l=n.match(/^(\w+)\s*(.*)$/),u=l[1]+r.eventNamespace,c=l[2];c?a.delegate(c,u,h):s.bind(u,h)})},_off:function(e,t){t=(t||"").split(" ").join(this.eventNamespace+" ")+this.eventNamespace,e.unbind(t).undelegate(t)},_delay:function(e,t){function i(){return("string"==typeof e?s[e]:e).apply(s,arguments)}var s=this;return setTimeout(i,t||0)},_hoverable:function(t){this.hoverable=this.hoverable.add(t),this._on(t,{mouseenter:function(t){e(t.currentTarget).addClass("ui-state-hover")},mouseleave:function(t){e(t.currentTarget).removeClass("ui-state-hover")}})},_focusable:function(t){this.focusable=this.focusable.add(t),this._on(t,{focusin:function(t){e(t.currentTarget).addClass("ui-state-focus")},focusout:function(t){e(t.currentTarget).removeClass("ui-state-focus")}})},_trigger:function(t,i,s){var n,a,r=this.options[t];if(s=s||{},i=e.Event(i),i.type=(t===this.widgetEventPrefix?t:this.widgetEventPrefix+t).toLowerCase(),i.target=this.element[0],a=i.originalEvent)for(n in a)n in i||(i[n]=a[n]);return this.element.trigger(i,s),!(e.isFunction(r)&&r.apply(this.element[0],[i].concat(s))===!1||i.isDefaultPrevented())}},e.each({show:"fadeIn",hide:"fadeOut"},function(t,i){e.Widget.prototype["_"+t]=function(s,n,a){"string"==typeof n&&(n={effect:n});var r,o=n?n===!0||"number"==typeof n?i:n.effect||i:t;n=n||{},"number"==typeof n&&(n={duration:n}),r=!e.isEmptyObject(n),n.complete=a,n.delay&&s.delay(n.delay),r&&e.effects&&e.effects.effect[o]?s[t](n):o!==t&&s[o]?s[o](n.duration,n.easing,a):s.queue(function(i){e(this)[t](),a&&a.call(s[0]),i()})}})})(jQuery);
 
 (function($) {
-  jQuery.fn.extend({
-    slimScroll: function(options) {
-      var defaults = {
+    jQuery.fn.extend({
+        slimScroll: function(options) {
+            var defaults = {
 
-        // width in pixels of the visible scroll area
-        width : 'auto',
+                // width in pixels of the visible scroll area
+                width: 'auto',
 
-        // height in pixels of the visible scroll area
-        height : '250px',
+                // height in pixels of the visible scroll area
+                height: '250px',
 
-        // width in pixels of the scrollbar and rail
-        size : '7px',
+                // width in pixels of the scrollbar and rail
+                size: '7px',
 
-        // scrollbar color, accepts any hex/color value
-        color: '#000',
+                // scrollbar color, accepts any hex/color value
+                color: '#000',
 
-        // scrollbar position - left/right
-        position : 'right',
+                // scrollbar position - left/right
+                position: 'right',
 
-        // distance in pixels between the side edge and the scrollbar
-        distance : '1px',
+                // distance in pixels between the side edge and the scrollbar
+                distance: '1px',
 
-        // default scroll position on load - top / bottom / $('selector')
-        start : 'top',
+                // default scroll position on load - top / bottom / $('selector')
+                start: 'top',
 
-        // sets scrollbar opacity
-        opacity : .4,
+                // sets scrollbar opacity
+                opacity: .4,
 
-        // enables always-on mode for the scrollbar
-        alwaysVisible : false,
+                // enables always-on mode for the scrollbar
+                alwaysVisible: false,
 
-        // check if we should hide the scrollbar when user is hovering over
-        disableFadeOut : false,
+                // check if we should hide the scrollbar when user is hovering over
+                disableFadeOut: false,
 
-        // sets visibility of the rail
-        railVisible : false,
+                // sets visibility of the rail
+                railVisible: false,
 
-        // sets rail color
-        railColor : '#333',
+                // sets rail color
+                railColor: '#333',
 
-        // sets rail opacity
-        railOpacity : .2,
+                // sets rail opacity
+                railOpacity: .2,
 
-        // whether  we should use jQuery UI Draggable to enable bar dragging
-        railDraggable : true,
+                // whether  we should use jQuery UI Draggable to enable bar dragging
+                railDraggable: true,
 
-        // defautlt CSS class of the slimscroll rail
-        railClass : 'slimScrollRail',
+                // defautlt CSS class of the slimscroll rail
+                railClass: 'slimScrollRail',
 
-        // defautlt CSS class of the slimscroll bar
-        barClass : 'slimScrollBar',
+                // defautlt CSS class of the slimscroll bar
+                barClass: 'slimScrollBar',
 
-        // defautlt CSS class of the slimscroll wrapper
-        wrapperClass : 'slimScrollDiv',
+                // defautlt CSS class of the slimscroll wrapper
+                wrapperClass: 'slimScrollDiv',
 
-        // check if mousewheel should scroll the window if we reach top/bottom
-        allowPageScroll : false,
+                // check if mousewheel should scroll the window if we reach top/bottom
+                allowPageScroll: false,
 
-        // scroll amount applied to each mouse wheel step
-        wheelStep : 20,
+                // scroll amount applied to each mouse wheel step
+                wheelStep: 20,
 
-        // scroll amount applied when user is using gestures
-        touchScrollStep : 200,
+                // scroll amount applied when user is using gestures
+                touchScrollStep: 200,
 
-        // sets border radius
-        borderRadius: '7px',
+                // sets border radius
+                borderRadius: '7px',
 
-        // sets border radius of the rail
-        railBorderRadius : '7px'
-      };
-
-      var o = $.extend(defaults, options);
-      this.each(function(){
-
-      var isOverPanel, isOverBar, isDragg, queueHide, touchDif,
-        barHeight, percentScroll, lastScroll,
-        divS = '<div></div>',
-        minBarHeight = 30,
-        releaseScroll = false;
-        var me = $(this);
-        if (me.parent().hasClass(o.wrapperClass))
-        {
-            var offset = me.scrollTop();
-            bar = me.parent().find('.' + o.barClass);
-            rail = me.parent().find('.' + o.railClass);
-
-            getBarHeight();
-            if ($.isPlainObject(options))
-            {
-              if ( 'height' in options && options.height == 'auto' ) {
-                me.parent().css('height', 'auto');
-                me.css('height', 'auto');
-                var height = me.parent().parent().height();
-                me.parent().css('height', height);
-                me.css('height', height);
-              }
-
-              if ('scrollTo' in options)
-              {
-                offset = parseInt(o.scrollTo);
-              }
-              else if ('scrollBy' in options)
-              {
-                offset += parseInt(o.scrollBy);
-              }
-              else if ('destroy' in options)
-              {
-                bar.remove();
-                rail.remove();
-                me.unwrap();
-                return;
-              }
-              scrollContent(offset, false, true);
-            }
-            return;
-        }
-        o.height = (o.height == 'auto') ? me.parent().height() : o.height;
-        var wrapper = $(divS)
-          .addClass(o.wrapperClass)
-          .css({
-            position: 'relative',
-            overflow: 'hidden',
-            width: o.width,
-            height: o.height
-          });
-        me.css({
-          overflow: 'hidden',
-          width: o.width,
-          height: o.height
-        });
-        var rail = $(divS)
-          .addClass(o.railClass)
-          .css({
-            width: o.size,
-            height: '100%',
-            position: 'absolute',
-            top: 0,
-            display: (o.alwaysVisible && o.railVisible) ? 'block' : 'none',
-            'border-radius': o.railBorderRadius,
-            background: o.railColor,
-            opacity: o.railOpacity,
-            zIndex: 90
-          });
-        var bar = $(divS)
-          .addClass(o.barClass)
-          .css({
-            background: o.color,
-            width: o.size,
-            position: 'absolute',
-            top: 0,
-            opacity: o.opacity,
-            display: o.alwaysVisible ? 'block' : 'none',
-            'border-radius' : o.borderRadius,
-            BorderRadius: o.borderRadius,
-            MozBorderRadius: o.borderRadius,
-            WebkitBorderRadius: o.borderRadius,
-            zIndex: 99
-          });
-        var posCss = (o.position == 'right') ? { right: o.distance } : { left: o.distance };
-        rail.css(posCss);
-        bar.css(posCss);
-        me.wrap(wrapper);
-        me.parent().append(bar);
-        me.parent().append(rail);
-        if (o.railDraggable){
-          bar.bind("mousedown", function(e) {
-            var $doc = $(document);
-            isDragg = true;
-            t = parseFloat(bar.css('top'));
-            pageY = e.pageY;
-
-            $doc.bind("mousemove.slimscroll", function(e){
-              currTop = t + e.pageY - pageY;
-              bar.css('top', currTop);
-              scrollContent(0, bar.position().top, false);// scroll content
+                // sets border radius of the rail
+                railBorderRadius: '7px'
+            };
+            
+            var o = $.extend(defaults, options);
+            this.each(function() {
+                
+                var isOverPanel, isOverBar, isDragg, queueHide, touchDif, 
+                barHeight, percentScroll, lastScroll, 
+                divS = '<div></div>', 
+                minBarHeight = 30, 
+                releaseScroll = false;
+                var me = $(this);
+                if (me.parent().hasClass(o.wrapperClass)) 
+                {
+                    var offset = me.scrollTop();
+                    bar = me.parent().find('.' + o.barClass);
+                    rail = me.parent().find('.' + o.railClass);
+                    
+                    getBarHeight();
+                    if ($.isPlainObject(options)) 
+                    {
+                        if ('height' in options && options.height == 'auto') {
+                            me.parent().css('height', 'auto');
+                            me.css('height', 'auto');
+                            var height = me.parent().parent().height();
+                            me.parent().css('height', height);
+                            me.css('height', height);
+                        }
+                        
+                        if ('scrollTo' in options) 
+                        {
+                            offset = parseInt(o.scrollTo);
+                        } 
+                        else if ('scrollBy' in options) 
+                        {
+                            offset += parseInt(o.scrollBy);
+                        } 
+                        else if ('destroy' in options) 
+                        {
+                            bar.remove();
+                            rail.remove();
+                            me.unwrap();
+                            return;
+                        }
+                        scrollContent(offset, false, true);
+                    }
+                    return;
+                }
+                o.height = (o.height == 'auto') ? me.parent().height() : o.height;
+                var wrapper = $(divS)
+                .addClass(o.wrapperClass)
+                .css({
+                    position: 'relative',
+                    overflow: 'hidden',
+                    width: o.width,
+                    height: o.height
+                });
+                me.css({
+                    overflow: 'hidden',
+                    width: o.width,
+                    height: o.height
+                });
+                var rail = $(divS)
+                .addClass(o.railClass)
+                .css({
+                    width: o.size,
+                    height: '100%',
+                    position: 'absolute',
+                    top: 0,
+                    display: (o.alwaysVisible && o.railVisible) ? 'block' : 'none',
+                    'border-radius': o.railBorderRadius,
+                    background: o.railColor,
+                    opacity: o.railOpacity,
+                    zIndex: 90
+                });
+                var bar = $(divS)
+                .addClass(o.barClass)
+                .css({
+                    background: o.color,
+                    width: o.size,
+                    position: 'absolute',
+                    top: 0,
+                    opacity: o.opacity,
+                    display: o.alwaysVisible ? 'block' : 'none',
+                    'border-radius': o.borderRadius,
+                    BorderRadius: o.borderRadius,
+                    MozBorderRadius: o.borderRadius,
+                    WebkitBorderRadius: o.borderRadius,
+                    zIndex: 99
+                });
+                var posCss = (o.position == 'right') ? {right: o.distance} : {left: o.distance};
+                rail.css(posCss);
+                bar.css(posCss);
+                me.wrap(wrapper);
+                me.parent().append(bar);
+                me.parent().append(rail);
+                if (o.railDraggable) {
+                    bar.bind("mousedown", function(e) {
+                        var $doc = $(document);
+                        isDragg = true;
+                        t = parseFloat(bar.css('top'));
+                        pageY = e.pageY;
+                        
+                        $doc.bind("mousemove.slimscroll", function(e) {
+                            currTop = t + e.pageY - pageY;
+                            bar.css('top', currTop);
+                            scrollContent(0, bar.position().top, false); // scroll content
+                        });
+                        
+                        $doc.bind("mouseup.slimscroll", function(e) {
+                            isDragg = false;
+                            hideBar();
+                            $doc.unbind('.slimscroll');
+                        });
+                        return false;
+                    }).bind("selectstart.slimscroll", function(e) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        return false;
+                    });
+                }
+                rail.hover(function() {
+                    showBar();
+                }, function() {
+                    hideBar();
+                });
+                bar.hover(function() {
+                    isOverBar = true;
+                }, function() {
+                    isOverBar = false;
+                });
+                me.hover(function() {
+                    isOverPanel = true;
+                    showBar();
+                    hideBar();
+                }, function() {
+                    isOverPanel = false;
+                    hideBar();
+                });
+                me.bind('touchstart', function(e, b) {
+                    if (e.originalEvent.touches.length) 
+                    {
+                        touchDif = e.originalEvent.touches[0].pageY;
+                    }
+                });
+                
+                me.bind('touchmove', function(e) {
+                    if (!releaseScroll) 
+                    {
+                        e.originalEvent.preventDefault();
+                    }
+                    if (e.originalEvent.touches.length) 
+                    {
+                        var diff = (touchDif - e.originalEvent.touches[0].pageY) / o.touchScrollStep;
+                        scrollContent(diff, true);
+                        touchDif = e.originalEvent.touches[0].pageY;
+                    }
+                });
+                getBarHeight();
+                if (o.start === 'bottom') 
+                {
+                    bar.css({top: me.outerHeight() - bar.outerHeight()});
+                    scrollContent(0, true);
+                } 
+                else if (o.start !== 'top') 
+                {
+                    scrollContent($(o.start).position().top, null, true);
+                    if (!o.alwaysVisible) {
+                        bar.hide();
+                    }
+                }
+                attachWheel();
+                
+                function _onWheel(e) 
+                {
+                    if (!isOverPanel) {
+                        return;
+                    }
+                    var e = e || window.event;
+                    var delta = 0;
+                    if (e.wheelDelta) {
+                        delta = -e.wheelDelta / 120;
+                    }
+                    if (e.detail) {
+                        delta = e.detail / 3;
+                    }
+                    var target = e.target || e.srcTarget || e.srcElement;
+                    if ($(target).closest('.' + o.wrapperClass).is(me.parent())) {
+                        scrollContent(delta, true);
+                    }
+                    if (e.preventDefault && !releaseScroll) {
+                        e.preventDefault();
+                    }
+                    if (!releaseScroll) {
+                        e.returnValue = false;
+                    }
+                }
+                
+                function scrollContent(y, isWheel, isJump) 
+                {
+                    releaseScroll = false;
+                    var delta = y;
+                    var maxTop = me.outerHeight() - bar.outerHeight();
+                    
+                    if (isWheel) 
+                    {
+                        delta = parseInt(bar.css('top')) + y * parseInt(o.wheelStep) / 100 * bar.outerHeight();
+                        delta = Math.min(Math.max(delta, 0), maxTop);
+                        delta = (y > 0) ? Math.ceil(delta) : Math.floor(delta);
+                        bar.css({top: delta + 'px'});
+                    }
+                    percentScroll = parseInt(bar.css('top')) / (me.outerHeight() - bar.outerHeight());
+                    delta = percentScroll * (me[0].scrollHeight - me.outerHeight());
+                    
+                    if (isJump) 
+                    {
+                        delta = y;
+                        var offsetTop = delta / me[0].scrollHeight * me.outerHeight();
+                        offsetTop = Math.min(Math.max(offsetTop, 0), maxTop);
+                        bar.css({top: offsetTop + 'px'});
+                    }
+                    me.scrollTop(delta);
+                    me.trigger('slimscrolling', ~~delta);
+                    showBar();
+                    hideBar();
+                }
+                
+                function attachWheel() 
+                {
+                    if (window.addEventListener) 
+                    {
+                        this.addEventListener('DOMMouseScroll', _onWheel, false);
+                        this.addEventListener('mousewheel', _onWheel, false);
+                        this.addEventListener('MozMousePixelScroll', _onWheel, false);
+                    } 
+                    else 
+                    {
+                        document.attachEvent("onmousewheel", _onWheel)
+                    }
+                }
+                
+                function getBarHeight() 
+                {
+                    barHeight = Math.max((me.outerHeight() / me[0].scrollHeight) * me.outerHeight(), minBarHeight);
+                    bar.css({height: barHeight + 'px'});
+                    var display = barHeight == me.outerHeight() ? 'none' : 'block';
+                    bar.css({display: display});
+                }
+                function showBar() 
+                {
+                    getBarHeight();
+                    clearTimeout(queueHide);
+                    if (percentScroll == ~~percentScroll) 
+                    {
+                        releaseScroll = o.allowPageScroll;
+                        if (lastScroll != percentScroll) 
+                        {
+                            var msg = (~~percentScroll == 0) ? 'top' : 'bottom';
+                            me.trigger('slimscroll', msg);
+                        }
+                    } 
+                    else 
+                    {
+                        releaseScroll = false;
+                    }
+                    lastScroll = percentScroll;
+                    if (barHeight >= me.outerHeight()) {
+                        releaseScroll = true;
+                        return;
+                    }
+                    bar.stop(true, true).fadeIn('fast');
+                    if (o.railVisible) {
+                        rail.stop(true, true).fadeIn('fast');
+                    }
+                }
+                function hideBar() 
+                {
+                    if (!o.alwaysVisible) 
+                    {
+                        queueHide = setTimeout(function() {
+                            if (!(o.disableFadeOut && isOverPanel) && !isOverBar && !isDragg) 
+                            {
+                                bar.fadeOut('slow');
+                                rail.fadeOut('slow');
+                            }
+                        }, 1000);
+                    }
+                }
             });
-
-            $doc.bind("mouseup.slimscroll", function(e) {
-              isDragg = false;hideBar();
-              $doc.unbind('.slimscroll');
-            });
-            return false;
-          }).bind("selectstart.slimscroll", function(e){
-            e.stopPropagation();
-            e.preventDefault();
-            return false;
-          });
+            return this;
         }
-        rail.hover(function(){
-          showBar();
-        }, function(){
-          hideBar();
-        });
-        bar.hover(function(){
-          isOverBar = true;
-        }, function(){
-          isOverBar = false;
-        });
-        me.hover(function(){
-          isOverPanel = true;
-          showBar();
-          hideBar();
-        }, function(){
-          isOverPanel = false;
-          hideBar();
-        });
-        me.bind('touchstart', function(e,b){
-          if (e.originalEvent.touches.length)
-          {
-            touchDif = e.originalEvent.touches[0].pageY;
-          }
-        });
-
-        me.bind('touchmove', function(e){
-          if(!releaseScroll)
-          {
-  		      e.originalEvent.preventDefault();
-		      }
-          if (e.originalEvent.touches.length)
-          {
-            var diff = (touchDif - e.originalEvent.touches[0].pageY) / o.touchScrollStep;
-            scrollContent(diff, true);
-            touchDif = e.originalEvent.touches[0].pageY;
-          }
-        });
-        getBarHeight();
-        if (o.start === 'bottom')
-        {
-          bar.css({ top: me.outerHeight() - bar.outerHeight() });
-          scrollContent(0, true);
-        }
-        else if (o.start !== 'top')
-        {
-          scrollContent($(o.start).position().top, null, true);
-          if (!o.alwaysVisible) { bar.hide(); }
-        }
-        attachWheel();
-
-        function _onWheel(e)
-        {
-          if (!isOverPanel) { return; }
-          var e = e || window.event;
-          var delta = 0;
-          if (e.wheelDelta) { delta = -e.wheelDelta/120; }
-          if (e.detail) { delta = e.detail / 3; }
-          var target = e.target || e.srcTarget || e.srcElement;
-          if ($(target).closest('.' + o.wrapperClass).is(me.parent())) {
-            scrollContent(delta, true);
-          }
-          if (e.preventDefault && !releaseScroll) { e.preventDefault(); }
-          if (!releaseScroll) { e.returnValue = false; }
-        }
-
-        function scrollContent(y, isWheel, isJump)
-        {
-          releaseScroll = false;
-          var delta = y;
-          var maxTop = me.outerHeight() - bar.outerHeight();
-
-          if (isWheel)
-          {
-            delta = parseInt(bar.css('top')) + y * parseInt(o.wheelStep) / 100 * bar.outerHeight();
-            delta = Math.min(Math.max(delta, 0), maxTop);
-            delta = (y > 0) ? Math.ceil(delta) : Math.floor(delta);
-            bar.css({ top: delta + 'px' });
-          }
-          percentScroll = parseInt(bar.css('top')) / (me.outerHeight() - bar.outerHeight());
-          delta = percentScroll * (me[0].scrollHeight - me.outerHeight());
-
-          if (isJump)
-          {
-            delta = y;
-            var offsetTop = delta / me[0].scrollHeight * me.outerHeight();
-            offsetTop = Math.min(Math.max(offsetTop, 0), maxTop);
-            bar.css({ top: offsetTop + 'px' });
-          }
-          me.scrollTop(delta);
-          me.trigger('slimscrolling', ~~delta);
-          showBar();
-          hideBar();
-        }
-
-        function attachWheel()
-        {
-          if (window.addEventListener)
-          {
-            this.addEventListener('DOMMouseScroll', _onWheel, false );
-            this.addEventListener('mousewheel', _onWheel, false );
-            this.addEventListener('MozMousePixelScroll', _onWheel, false );
-          }
-          else
-          {
-            document.attachEvent("onmousewheel", _onWheel)
-          }
-        }
-
-        function getBarHeight()
-        {
-          barHeight = Math.max((me.outerHeight() / me[0].scrollHeight) * me.outerHeight(), minBarHeight);
-          bar.css({ height: barHeight + 'px' });
-          var display = barHeight == me.outerHeight() ? 'none' : 'block';
-          bar.css({ display: display });
-        }
-        function showBar()
-        {
-          getBarHeight();
-          clearTimeout(queueHide);
-          if (percentScroll == ~~percentScroll)
-          {
-            releaseScroll = o.allowPageScroll;
-            if (lastScroll != percentScroll)
-            {
-                var msg = (~~percentScroll == 0) ? 'top' : 'bottom';
-                me.trigger('slimscroll', msg);
-            }
-          }
-          else
-          {
-            releaseScroll = false;
-          }
-          lastScroll = percentScroll;
-          if(barHeight >= me.outerHeight()) {
-            releaseScroll = true;
-            return;
-          }
-          bar.stop(true,true).fadeIn('fast');
-          if (o.railVisible) { rail.stop(true,true).fadeIn('fast'); }
-        }
-        function hideBar()
-        {
-          if (!o.alwaysVisible)
-          {
-            queueHide = setTimeout(function(){
-              if (!(o.disableFadeOut && isOverPanel) && !isOverBar && !isDragg)
-              {
-                bar.fadeOut('slow');
-                rail.fadeOut('slow');
-              }
-            }, 1000);
-          }
-        }
-      });
-      return this;
-    }
-  });
-
-  jQuery.fn.extend({
-    slimscroll: jQuery.fn.slimScroll
-  });
+    });
+    
+    jQuery.fn.extend({
+        slimscroll: jQuery.fn.slimScroll
+    });
 
 })(jQuery);
 var METRO_AUTO_REINIT,METRO_LOCALE,METRO_WEEK_START,METRO_DIALOG=!1;(function(c){c.Metro=function(a){c.extend({},a)};c.Metro.getDeviceSize=function(){return{width:0<window.innerWidth?window.innerWidth:screen.width,height:0<window.innerHeight?window.innerHeight:screen.height}}})(jQuery);$(function(){$("html").on("click",function(c){$(".dropdown-menu").each(function(a,b){$(b).hasClass("keep-open")||"block"!=$(b).css("display")||$(b).hide()})})});
@@ -762,34 +777,34 @@ function HistoryData() {
     this.loadLocalStore();
 }
 HistoryData.prototype = {
-	loadLocalStore:function(){
-	    // load jvhistory
-	    this.jvhistory = JSON.parse(localStorage.getItem(JVDICT_HISTORY));
-	    if (this.jvhistory == null)
-	        this.jvhistory = [];
-	    
-	    for (var index in this.jvhistory) {
-	        wordObj = this.jvhistory[index];
-	        $("#history-group").prepend(this.makeHisItem(wordObj));
-	    }
-	    // load jvreminder
-	    this.jvremind = JSON.parse(localStorage.getItem(JVDICT_REMIND));
-	    if (this.jvremind == null)
-	        this.jvremind = [];
-	    
-	    for (var index in this.jvremind) {
-	        wordObj = this.jvremind[index];
-	        $("#remind-group").prepend(this.makeHisItem(wordObj, true));
-	    }
-	    // load max
-	    var maxRemind = parseInt(localStorage.getItem(JV_MAX_REMIND));
-	    var maxHistory = parseInt(localStorage.getItem(JV_MAX_HISTORY));
-	    
-	    if (!isNaN(maxRemind) && maxRemind > 0)
-	        MAX_REMIND = maxRemind;
-	    if (!isNaN(maxHistory) && maxHistory > 0)
-	        MAX_HISTORY = maxHistory;
-	},
+    loadLocalStore: function() {
+        // load jvhistory
+        this.jvhistory = JSON.parse(localStorage.getItem(JVDICT_HISTORY));
+        if (this.jvhistory == null)
+            this.jvhistory = [];
+        
+        for (var index in this.jvhistory) {
+            wordObj = this.jvhistory[index];
+            $("#history-group").prepend(this.makeHisItem(wordObj));
+        }
+        // load jvreminder
+        this.jvremind = JSON.parse(localStorage.getItem(JVDICT_REMIND));
+        if (this.jvremind == null)
+            this.jvremind = [];
+        
+        for (var index in this.jvremind) {
+            wordObj = this.jvremind[index];
+            $("#remind-group").prepend(this.makeHisItem(wordObj, true));
+        }
+        // load max
+        var maxRemind = parseInt(localStorage.getItem(JV_MAX_REMIND));
+        var maxHistory = parseInt(localStorage.getItem(JV_MAX_HISTORY));
+        
+        if (!isNaN(maxRemind) && maxRemind > 0)
+            MAX_REMIND = maxRemind;
+        if (!isNaN(maxHistory) && maxHistory > 0)
+            MAX_HISTORY = maxHistory;
+    },
     findbyID: function(arr, id) {
         for (var index in arr) {
             if (arr[index].id == id)
@@ -891,7 +906,7 @@ HistoryData.prototype = {
     delRemind: function(hisID) {
         var index = this.findbyID(this.jvremind, hisID);
         if (index >= 0) {
-        	var word=this.jvremind[index].word;
+            var word = this.jvremind[index].word;
             this.jvremind.splice(index, 1);
             localStorage.setItem(JVDICT_REMIND, JSON.stringify(this.jvremind));
             $("#history-" + hisID).fadeOut('slow', function() {
@@ -928,8 +943,8 @@ HistoryData.prototype = {
             id: ++this.maxID,
             word: string
         };
-        if(this.addRemindObj(wordObj)){
-        	notifChange.show(string, 2000);
+        if (this.addRemindObj(wordObj)) {
+            notifChange.show(string, 2000);
         }
     },
     nextRemind: function() {
@@ -945,15 +960,15 @@ HistoryData.prototype = {
                 this.index = 0;
             }
         }
-
+        
         return this.jvremind[this.index];
     },
     
     makeWordObj: function(inputText) {
         var wordObj = {
-                id: ++this.maxID,
-                word: inputText
-            };
+            id: ++this.maxID,
+            word: inputText
+        };
         return wordObj;
     },
     getHisWord: function(id) {
@@ -975,63 +990,63 @@ HistoryData.prototype = {
 function AlertWord() {
     this.imageURL = "./images/logo.png";
     this.instance = null;
-	this.nextWord;
-	this.count=0;
-	this.loadLocalStore();
+    this.nextWord;
+    this.count = 0;
+    this.loadLocalStore();
 }
 AlertWord.prototype = {
-	loadLocalStore:function() {
-	    // load time
-	    var timeShow = parseInt(localStorage.getItem(HIS_TIME_SHOW));
-	    var timeDelay = parseInt(localStorage.getItem(HIS_TIME_DELAY));
-	    if (!isNaN(timeShow) && timeShow > 0)
-	        TIME_SHOW = timeShow;
-	    if (!isNaN(timeDelay) && timeDelay > 0)
-	        TIME_DELAY = timeDelay;
+    loadLocalStore: function() {
+        // load time
+        var timeShow = parseInt(localStorage.getItem(HIS_TIME_SHOW));
+        var timeDelay = parseInt(localStorage.getItem(HIS_TIME_DELAY));
+        if (!isNaN(timeShow) && timeShow > 0)
+            TIME_SHOW = timeShow;
+        if (!isNaN(timeDelay) && timeDelay > 0)
+            TIME_DELAY = timeDelay;
 
-	    // load randomShow flag
-	    var flag = localStorage.getItem(LOG_HISTORY_FLAG);
-	    if (flag == null || flag == "on") {
-	        HISTORY_FLAG = true;
-	    }
+        // load randomShow flag
+        var flag = localStorage.getItem(LOG_HISTORY_FLAG);
+        if (flag == null || flag == "on") {
+            HISTORY_FLAG = true;
+        }
 
-	    // load shownotiff flag
-	    var flag = localStorage.getItem(RANDOM_SHOW_FLAG);
-	    if (flag == null || flag == "on") {
-	        RANDOM_FLAG = true;
-	    }
-	    // load loghistory flag
-	    var flag = localStorage.getItem(SHOW_NOTIF_FLAG);
-	    if (flag == null || flag == "on") {
-	        NOTIF_FLAG = true;
-	    }
-	    // load sound flag
-	    var flag = localStorage.getItem(SOUND_REMIND_FLAG);
-	    if (flag == null || flag == "on") {
-	        SOUND_REMIND = true;
-	    }
-	},
+        // load shownotiff flag
+        var flag = localStorage.getItem(RANDOM_SHOW_FLAG);
+        if (flag == null || flag == "on") {
+            RANDOM_FLAG = true;
+        }
+        // load loghistory flag
+        var flag = localStorage.getItem(SHOW_NOTIF_FLAG);
+        if (flag == null || flag == "on") {
+            NOTIF_FLAG = true;
+        }
+        // load sound flag
+        var flag = localStorage.getItem(SOUND_REMIND_FLAG);
+        if (flag == null || flag == "on") {
+            SOUND_REMIND = true;
+        }
+    },
     start: function() {
-	var tmp = window.hisData.nextRemind();
-	if(this.nextWord==tmp)
-        tmp = window.hisData.nextRemind();
-	this.nextWord = tmp;
+        var tmp = window.hisData.nextRemind();
+        if (this.nextWord == tmp)
+            tmp = window.hisData.nextRemind();
+        this.nextWord = tmp;
         if (NOTIF_FLAG && this.nextWord != null) {
             this.loadSound(this.nextWord.word);
-			this.notifBlink(this.nextWord.id, ++this.count);
+            this.notifBlink(this.nextWord.id, ++this.count);
         }
         setTimeout(this.start.bind(this), TIME_DELAY * 1000);
-
+    
     },
-    notifBlink:function(id, alertId){
-	if(NOTIF_FLAG && $("#history-"+id)!=null && alertId==this.count){
-		if(window.isFocused){
-			$("#history-"+id).find(".icon-bell").fadeOut(500);
-			$("#history-"+id).find(".icon-bell").fadeIn(500);
-		}
-		setTimeout(this.notifBlink.bind(this, id, alertId), 1000);
-		}
-	},
+    notifBlink: function(id, alertId) {
+        if (NOTIF_FLAG && $("#history-" + id) != null && alertId == this.count) {
+            if (window.isFocused) {
+                $("#history-" + id).find(".icon-bell").fadeOut(500);
+                $("#history-" + id).find(".icon-bell").fadeIn(500);
+            }
+            setTimeout(this.notifBlink.bind(this, id, alertId), 1000);
+        }
+    },
     loadSound: function(notifTxt) {
         if (SOUND_REMIND) {
             soundURL = 'http://www.ispeech.org/p/generic/getaudio?text=' + notifTxt 
@@ -1039,10 +1054,11 @@ AlertWord.prototype = {
             $("#sound-remind").attr("src", soundURL);
             $("#sound-control").trigger('load');
         }
-        setTimeout(this.notifyShow.bind(this, notifTxt), TIME_LOAD_SOUND*1000);
+        setTimeout(this.notifyShow.bind(this, notifTxt), TIME_LOAD_SOUND * 1000);
     },
     notifyShow: function(notifTxt) {
-		if(NOTIF_FLAG == false)return;
+        if (NOTIF_FLAG == false)
+            return;
         if (!("Notification" in window)) {
             alert("Trình duyệt này không hỗ trợ nhắc từ, hãy dùng phiên bản mới nhất của Chrome, Firefox!");
             NOTIF_FLAG = false;
@@ -1056,30 +1072,32 @@ AlertWord.prototype = {
             Notification.requestPermission(function(permission) {
                 if (permission === "granted") {
                     this.instance = new Notification("JaViDict", {
-						icon: this.imageURL,
-						body: notifTxt
-				});
+                        icon: this.imageURL,
+                        body: notifTxt
+                    });
                 }
             });
         }
         if (this.instance != null) {
-            setTimeout(function(){this.instance.close()}.bind(this), TIME_SHOW * 1000);
+            setTimeout(function() {
+                this.instance.close()
+            }.bind(this), TIME_SHOW * 1000);
             
             this.instance.onclick = function() {
                 $("#word-box").val(notifTxt);
                 search.isWordTyped = false;
                 search.getResult(notifTxt, false);
                 
-                if(window.isFocused==false){
-                   alert("Chào mừng trở lại với JaviDict!");
-                   window.isFocused=true;
+                if (window.isFocused == false) {
+                    alert("Chào mừng trở lại với JaviDict!");
+                    window.isFocused = true;
                 }
-                var index=hisData.findbyText(hisData.jvremind, notifTxt);
-        	if(index>=0){
-         	    var hisID=hisData.jvremind[index].id;
-        	    var pos= $("#history-"+hisID).position();
-            	    $("#div-history").slimScroll({ scrollBy: (pos.top-5)+'px', animate: true });
-        	}
+                var index = hisData.findbyText(hisData.jvremind, notifTxt);
+                if (index >= 0) {
+                    var hisID = hisData.jvremind[index].id;
+                    var pos = $("#history-" + hisID).position();
+                    $("#div-history").slimScroll({scrollBy: (pos.top - 5) + 'px',animate: true});
+                }
             };
             this.instance.onerror = function() {
             };
@@ -1093,18 +1111,19 @@ AlertWord.prototype = {
         }
     }
 }
-function NotifChange(){}
+function NotifChange() {
+}
 
-NotifChange.prototype={
-	show:function(content, msecond){
-		$("#notif-change").show("slow");
-		$("#notif-change").html("Đã thêm vào Nhắc từ:<br/>"+content+"");
-		setTimeout(this.hide, msecond);
-	},
-	hide:function(){
-		$("#notif-change").html("");
-		$("#notif-change").hide("slow");
-	}		
+NotifChange.prototype = {
+    show: function(content, msecond) {
+        $("#notif-change").show("slow");
+        $("#notif-change").html("Đã thêm vào Nhắc từ:<br/>" + content + "");
+        setTimeout(this.hide, msecond);
+    },
+    hide: function() {
+        $("#notif-change").html("");
+        $("#notif-change").hide("slow");
+    }
 }
 function ShowPanel() {
     this.helpPanelTxt = '<div class="help-div"><div><b>Giới thiệu chức năng cơ bản của từ điển:</b></div><div>&nbsp; 1.<span class="Apple-tab-span" style="white-space: pre"> </span>Nhập từ và nhấn nút tìm kiếm để tìm kết quả.</div><div>&nbsp; 2.<span class="Apple-tab-span" style="white-space: pre"> </span>Bật tắt các tùy chọn tìm kiếm từ vựng, hán tự, ngữ pháp.</div><div>&nbsp; 3.<span class="Apple-tab-span" style="white-space: pre"> </span>Click vào nút hình cái chuông trên phần lịch sử để nhắc từ muốn nhớ</div><div>&nbsp; &nbsp;&lt;chú ý: khi đóng tab thì nhắc từ sẽ tự động mất, dữ liệu nhắc từ/lịch sử được lưu trên máy tính của bạn và chỉ mất khi xóa cache data&gt;</div><div>&nbsp; 4.<span class="Apple-tab-span" style="white-space: pre"> </span>Mở Cài Đặt bên góc bên phải để cài đặt thời gian hiện nhắc từ, bật tắt nhắc từ, cho phép lưu lịch sử, hay chọn chế độ nhắc từ theo ngẫu nhiên...</div><div></div><div><b>Hạn chế:</b></div><div>&nbsp; 1. Ứng dụng này sử dụng tài nguyên miễn phí nên tốc độ khá chậm :(</div><div>&nbsp; 2. Từ điển có phần chưa đầy đủ nghĩa, ví dụ...</div><div>&nbsp; (sẽ được cập nhật trong phiên bản tiếp theo)</div></div>';
@@ -1218,11 +1237,11 @@ ShowPanel.prototype = {
         });
     }
 };
-KANJI_DRAW_RESULT_HEIGHT=45;
-KANJI_DRAW_TOP=104;
-KANJI_DRAW_LEFT=335;
-KANJI_DRAW_WIDTH=642;
-KANJI_DRAW_HEIGHT=455;
+KANJI_DRAW_RESULT_HEIGHT = 45;
+KANJI_DRAW_TOP = 104;
+KANJI_DRAW_LEFT = 335;
+KANJI_DRAW_WIDTH = 642;
+KANJI_DRAW_HEIGHT = 455;
 function DrawKanji() {
     this.data;
     this.started;
@@ -1237,7 +1256,8 @@ function DrawKanji() {
     $("#draw-pad").css("zIndex", 101);
     this.canvas = document.getElementById('kanji-draw');
     this.context = this.canvas.getContext('2d');
-};
+}
+;
 
 DrawKanji.prototype = {
     initialize: function(top, left, width, height) {
@@ -1259,7 +1279,7 @@ DrawKanji.prototype = {
     toogleDrawpad: function() {
         $("#draw-pad").toggleClass("draw-pad");
         if ($("#draw-pad").css('visibility') !== 'hidden') {
-        	this.kanjiSmallPad();
+            this.kanjiSmallPad();
             this.canvas.addEventListener('mousedown', this.ev_canvas.bind(this), false);
             this.canvas.addEventListener('mousemove', this.ev_canvas.bind(this), false);
             this.canvas.addEventListener('mouseup', this.ev_canvas.bind(this), false);
@@ -1345,8 +1365,8 @@ DrawKanji.prototype = {
             data: jsonTxt,
             contentType: "application/json; charset=utf-8",
             success: function(msg) {
-            	if(msg[0]=="SUCCESS")
-                  $("#kanji-result").html(this.makeResulTxt(msg[1][0][1]));
+                if (msg[0] == "SUCCESS")
+                    $("#kanji-result").html(this.makeResulTxt(msg[1][0][1]));
             }.bind(this)
         });
     },
@@ -1422,8 +1442,8 @@ DrawKanji.prototype = {
 };
 
 function Search() {
-    this.search = this.search_JaVi;
-    this.getResult = this.getResultJaVi;
+    this.search = this.jaVi.search;
+    this.getResult = this.jaVi.getResult;
     this.cur_kanji = "";
     this.cur_new_word = "";
     this.cur_grammar = "";
@@ -1432,93 +1452,99 @@ function Search() {
     this.active_tab = NEW_WORD_TAB;
 }
 Search.prototype = {
-    search_JaVi: function() {
-        var inputText = wanakana.toHiragana($("#word-box").val());
-        if (inputText.length <= 0 || inputText == this.cur_new_word) {
-            this.enter_enabled = true;
-            return;
-        }
-        this.getResult(inputText, true);
-    },
-    getResultJaVi: function(inputText, addRemind) {
-        this.cur_new_word = inputText;
-        $('body').addClass("loading-search");
-        $.ajax({
-            type: "GET",
-            url: "http://mazii.net/api/search/" + inputText + "/10/1",
-            success: function(result) {
-                $('body').removeClass("loading-search");
-                $("#new-word-ctn").html(utility.makeJaVi(result.data, this.cur_new_word));
+    jaVi: {
+        search: function() {
+            var inputText = wanakana.toHiragana($("#word-box").val());
+            if (inputText.length <= 0 || inputText == this.cur_new_word) {
                 this.enter_enabled = true;
-                if (HISTORY_FLAG && addRemind && result.found == true) {
-                    if (this.isWordTyped)
-                        hisData.addHistoryObj(hisData.makeWordObj(inputText));
-                    this.isWordTyped = false;
-                }
-            }.bind(this),
-            error: function(result) {
-                $('body').removeClass("loading-search");
-                $("#new-word-ctn").html("<div class='no-result'>Error :(</div>");
-                this.enter_enabled = true;
-            }.bind(this)
-        });
-    },
-    search_kanji: function() {
-        var inputText = $("#word-box").val();
-        if (inputText.length <= 0 || inputText == this.cur_kanji) {
-            this.enter_enabled = true;
-            return;
-        }
-        this.getResult(inputText, true);
-    },
-    getResultKanji: function(inputText, addRemind) {
-        this.cur_kanji = inputText;
-        if (utility.getKanjiChars(inputText) == "")
-            return;
-        $('body').addClass("loading-search");
-        $.ajax({
-            type: "GET",
-            url: "http://mazii.net/api/mazii/" + inputText + "/10",
-            success: function(e) {
-                $('body').removeClass("loading-search");
-                $("#kanji-ctn").html(utility.makeKanji(e.results, this.cur_kanji));
-                this.enter_enabled = true;
-                if (HISTORY_FLAG && addRemind && e.status != 302) {
-                    if (this.isWordTyped)
-                        hisData.addHistoryObj(hisData.makeWordObj(inputText));
-                    this.isWordTyped = false;
-                }
-            }.bind(this),
-            error: function(result) {
-                $('body').removeClass("loading-search");
-                $("#kanji-ctn").html("<div class='no-result'>Error :(</div>");
-                this.enter_enabled = true;
-            }.bind(this)
-        });
-    },
-    search_grammar: function() {
-        var inputText = $("#word-box").val();
-        if (inputText.length <= 0 || inputText == this.cur_grammar)
-            return;
-        this.cur_grammar = inputText;
-    
-    },
-    getResultGrammar: function(inputText, addRemind) {
-        $('body').addClass("loading-search");
-        $.ajax({
-            type: "POST",
-            url: "search-grammar/" + inputText,
-            data: {},
-            success: function(result) {
-                $("#new-word-ctn").html(result);
-                $('body').removeClass("loading-search");
-                this.enter_enabled = true;
-                if (HISTORY_FLAG && addRemind && result.indexOf("no results") < 0) {
-                    addHistoryObj(hisData.makeWordObj(inputText));
-                    $("#history-group").html(makeHisItem(wordObj) + $("#history-group").html());
-                }
+                return;
             }
-        });
+            this.getResult(inputText, true);
+        },
+        getResult: function(inputText, addRemind) {
+            this.cur_new_word = inputText;
+            $('body').addClass("loading-search");
+            $.ajax({
+                type: "GET",
+                url: "http://mazii.net/api/search/" + inputText + "/10/1",
+                success: function(result) {
+                    $('body').removeClass("loading-search");
+                    $("#new-word-ctn").html(utility.makeJaVi(result.data, this.cur_new_word));
+                    this.enter_enabled = true;
+                    if (HISTORY_FLAG && addRemind && result.found == true) {
+                        if (this.isWordTyped)
+                            hisData.addHistoryObj(hisData.makeWordObj(inputText));
+                        this.isWordTyped = false;
+                    }
+                }.bind(this),
+                error: function(result) {
+                    $('body').removeClass("loading-search");
+                    $("#new-word-ctn").html("<div class='no-result'>Error :(</div>");
+                    this.enter_enabled = true;
+                }.bind(this)
+            });
+        }
+    },
+    kanji: {
+        search: function() {
+            var inputText = $("#word-box").val();
+            if (inputText.length <= 0 || inputText == this.cur_kanji) {
+                this.enter_enabled = true;
+                return;
+            }
+            this.getResult(inputText, true);
+        },
+        getResult: function(inputText, addRemind) {
+            this.cur_kanji = inputText;
+            if (utility.getKanjiChars(inputText) == "")
+                return;
+            $('body').addClass("loading-search");
+            $.ajax({
+                type: "GET",
+                url: "http://mazii.net/api/mazii/" + inputText + "/10",
+                success: function(e) {
+                    $('body').removeClass("loading-search");
+                    $("#kanji-ctn").html(utility.makeKanji(e.results, this.cur_kanji));
+                    this.enter_enabled = true;
+                    if (HISTORY_FLAG && addRemind && e.status != 302) {
+                        if (this.isWordTyped)
+                            hisData.addHistoryObj(hisData.makeWordObj(inputText));
+                        this.isWordTyped = false;
+                    }
+                }.bind(this),
+                error: function(result) {
+                    $('body').removeClass("loading-search");
+                    $("#kanji-ctn").html("<div class='no-result'>Error :(</div>");
+                    this.enter_enabled = true;
+                }.bind(this)
+            });
+        }
+    },
+    grammar: {
+        search_grammar: function() {
+            var inputText = $("#word-box").val();
+            if (inputText.length <= 0 || inputText == this.cur_grammar)
+                return;
+            this.cur_grammar = inputText;
+        
+        },
+        getResultGrammar: function(inputText, addRemind) {
+            $('body').addClass("loading-search");
+            $.ajax({
+                type: "POST",
+                url: "search-grammar/" + inputText,
+                data: {},
+                success: function(result) {
+                    $("#new-word-ctn").html(result);
+                    $('body').removeClass("loading-search");
+                    this.enter_enabled = true;
+                    if (HISTORY_FLAG && addRemind && result.indexOf("no results") < 0) {
+                        addHistoryObj(hisData.makeWordObj(inputText));
+                        $("#history-group").html(makeHisItem(wordObj) + $("#history-group").html());
+                    }
+                }
+            });
+        }
     },
     loadWord: function(hisID, isRemind) {
         var word;
@@ -1536,22 +1562,23 @@ Search.prototype = {
     changeTab: function(tabId) {
         if (tabId == "_page_1") {
             this.active_tab = NEW_WORD_TAB;
-            this.search = this.search_JaVi;
-            this.getResult = this.getResultJaVi;
+            this.search = this.jaVi.search;
+            this.getResult = this.jaVi.getResult;
             this.search();
         } else if (tabId == "_page_2") {
             this.active_tab = KANJI_TAB;
-            this.search = this.search_kanji;
-            this.getResult = this.getResultKanji;
+            this.search = this.kanji.search;
+            this.getResult = this.kanji.getResult;
             this.search();
         } else if (tabId == "_page_3") {
             this.active_tab = GRAMMAR_TAB;
-            this.search = this.search_grammar;
-            this.getResult = this.getResultGrammar;
+            this.search = this.grammar.search;
+            this.getResult = this.grammar.getResult;
             this.search();
         }
     }
 }
+
 JVDICT_HISTORY = "jvdict-history"
 JVDICT_REMIND = "jvdict-jvremind";
 HIS_TIME_SHOW = "jvdict-time-show";
@@ -1579,7 +1606,7 @@ KANJI_TAB = "kanji";
 GRAMMAR_TAB = "grammar";
 
 HEADER_HEIGHT = 125;
-window.isFocused=true;
+window.isFocused = true;
 
 if (typeof (Storage) == "undefined") {
     alert("Sorry, your browser does not support Web Storage...");
@@ -1588,7 +1615,7 @@ if (typeof (Storage) == "undefined") {
 
 utility = new Utility();
 hisData = new HistoryData();
-notifChange=new NotifChange();
+notifChange = new NotifChange();
 alertWord = new AlertWord();
 panel = new ShowPanel();
 drawKanji = new DrawKanji();
@@ -1633,9 +1660,9 @@ $('.tab-control').tabcontrol().bind("tabcontrolchange", function(event, frame) {
     search.changeTab(id);
 });
 
-$(window).blur(function(){
-  window.isFocused=false;
+$(window).blur(function() {
+    window.isFocused = false;
 });
-$(window).focus(function(){
-  window.isFocused=true;
+$(window).focus(function() {
+    window.isFocused = true;
 });
