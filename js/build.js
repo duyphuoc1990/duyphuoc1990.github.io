@@ -857,7 +857,7 @@ HistoryData.prototype = {
         $("#history-group").prepend($(this.makeHisItem(wordObj)).fadeIn('slow'));
         
         if (this.jvhistory.length > MAX_HISTORY) {
-            this.delHistory(jvhistory[0].id)
+            this.delHistory(this.jvhistory[0].id)
         }
         return true;
     },
