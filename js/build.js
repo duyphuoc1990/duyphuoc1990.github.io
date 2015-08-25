@@ -798,12 +798,13 @@ HistoryData.prototype = {
         }
         // load max
         var maxRemind = parseInt(localStorage.getItem(JV_MAX_REMIND));
-        var maxHistory = parseInt(localStorage.getItem(JV_MAX_HISTORY));
-        
         if (!isNaN(maxRemind) && maxRemind > 0)
             MAX_REMIND = maxRemind;
+        
+        var maxHistory = parseInt(localStorage.getItem(JV_MAX_HISTORY)); 
         if (!isNaN(maxHistory) && maxHistory > 0)
             MAX_HISTORY = maxHistory;
+
     },
     findbyID: function(arr, id) {
         for (var index in arr) {
@@ -992,6 +993,7 @@ function AlertWord() {
     this.instance = null;
     this.nextWord;
     this.count = 0;
+    this.volume = 0.75;
     this.loadLocalStore();
 }
 AlertWord.prototype = {
@@ -1126,8 +1128,88 @@ NotifChange.prototype = {
     }
 }
 function ShowPanel() {
-    this.helpPanelTxt = '<div class="help-div"><div><b>Giới thiệu chức năng cơ bản của từ điển:</b></div><div>&nbsp; 1.<span class="Apple-tab-span" style="white-space: pre"> </span>Nhập từ và nhấn nút tìm kiếm để tìm kết quả.</div><div>&nbsp; 2.<span class="Apple-tab-span" style="white-space: pre"> </span>Bật tắt các tùy chọn tìm kiếm từ vựng, hán tự, ngữ pháp.</div><div>&nbsp; 3.<span class="Apple-tab-span" style="white-space: pre"> </span>Click vào nút hình cái chuông trên phần lịch sử để nhắc từ muốn nhớ</div><div>&nbsp; &nbsp;&lt;chú ý: khi đóng tab thì nhắc từ sẽ tự động mất, dữ liệu nhắc từ/lịch sử được lưu trên máy tính của bạn và chỉ mất khi xóa cache data&gt;</div><div>&nbsp; 4.<span class="Apple-tab-span" style="white-space: pre"> </span>Mở Cài Đặt bên góc bên phải để cài đặt thời gian hiện nhắc từ, bật tắt nhắc từ, cho phép lưu lịch sử, hay chọn chế độ nhắc từ theo ngẫu nhiên...</div><div></div><div><b>Hạn chế:</b></div><div>&nbsp; 1. Ứng dụng này sử dụng tài nguyên miễn phí nên tốc độ khá chậm :(</div><div>&nbsp; 2. Từ điển có phần chưa đầy đủ nghĩa, ví dụ...</div><div>&nbsp; (sẽ được cập nhật trong phiên bản tiếp theo)</div></div>';
-    this.settingPanelTxt = '<div class="setting-div"><div><span>Thời gian hiển thị nhắc từ (giây):</span><input id="time-show" type="number"></div><div><span>Thời gian giữa hai lần nhắc từ (giây):</span><input id="time-delay" type="number"></div><div><span>Số lượng nhắc từ tối đa:</span><input id="max-remind" type="number"></div><div><span>Số lượng từ tối đa lưu lịch sử:</span><input id="max-history" type="number"></div><div class="input-control switch jv-setting-switch" data-role="input-control"><label> Hiển thị nhắc từ <input id="notifChk" type="checkbox"> <span class="check jv-setting-check"></span></label> <label> Nhắc từ ngẫu nhiên <input id="randomChk" type="checkbox"> <span class="check jv-setting-check"></span></label> <label> Nhắc từ với âm thanh<input id="RemindSoundChk" type="checkbox"> <span class="check jv-setting-check"></span></label><label> Cho phép lưu lịch sử<input id="historyChk" type="checkbox"> <span class="check jv-setting-check"></span></label> </div><div class="form-actions"><button class="button primary" onclick="panel.applySetting()">Áp Dụng</button> <button class="button" type="button" onclick="$.Dialog.close()">Bỏ Qua</button> <button class="button del-button" onclick="panel.deleteAllHistory()">Xóa Lịch Sử</button> <button class="button del-button" onclick="panel.resetApp()"><b>Cài Đặt Lại</b></button> </div></div>';
+    this.helpPanelTxt = 
+		    '<div class="help-div">'+
+			'<div>'+
+				'<b>Giới thiệu chức năng cơ bản của từ điển:</b>'+
+			'</div>'+
+			'<div>'+
+				'&nbsp; 1.<span class="Apple-tab-span" style="white-space: pre"> </span>Nhập từ và nhấn nút tìm kiếm để tìm kết quả.'+
+			'</div>'+
+			'<div>'+
+				'&nbsp; 2.<span class="Apple-tab-span" style="white-space: pre"> </span>Bật tắt các tùy chọn tìm kiếm từ vựng, hán tự, ngữ pháp.'+
+			'</div>'+
+			'<div>'+
+				'&nbsp; 3.<span class="Apple-tab-span" style="white-space: pre"> </span>Click vào nút hình cái chuông trên phần lịch sử để nhắc từ muốn nhớ'+
+			'</div>'+
+			'<div>'+
+				'&nbsp; &nbsp;&lt;chú ý: khi đóng tab thì nhắc từ sẽ tự động mất, dữ liệu nhắc từ/lịch sử được lưu trên máy tính của bạn và chỉ mất khi xóa cache data&gt;'+
+			'</div>'+
+			'<div>'+
+				'&nbsp; 4.<span class="Apple-tab-span" style="white-space: pre"> </span>Mở Cài Đặt bên góc bên phải để cài đặt thời gian hiện nhắc từ, bật tắt nhắc từ, cho phép lưu lịch sử, hay chọn chế độ nhắc từ theo ngẫu nhiên...'+
+			'</div><div></div>'+
+			'<div>'+
+				'<b>Hạn chế:</b>'+
+			'</div>'+
+			'<div>'+
+				'&nbsp; 1. Ứng dụng này sử dụng tài nguyên miễn phí nên tốc độ khá chậm :('+
+			'</div>'+
+			'<div>'+
+				'&nbsp; 2. Từ điển có phần chưa đầy đủ nghĩa, ví dụ...'+
+			'</div>'+
+			'<div>'+
+				'&nbsp; (sẽ được cập nhật trong phiên bản tiếp theo)'+
+			'</div>'+
+		'</div>';
+    
+    this.settingPanelTxt = 
+		'<div class="setting-div">'+
+			'<div>'+
+				'<span>Thời gian hiển thị nhắc từ (giây):</span>'+
+				'<input id="time-show" type="number">'+
+			'</div>'+
+			'<div>'+
+				'<span>Thời gian giữa hai lần nhắc từ (giây):</span>'+
+				'<input id="time-delay" type="number">'+
+			'</div>'+
+			'<div>'+
+				'<span>Số lượng nhắc từ tối đa:</span>'+
+				'<input id="max-remind" type="number">'+
+			'</div>'+
+			'<div>'+
+				'<span>Số lượng từ tối đa lưu lịch sử:</span>'+
+				'<input id="max-history" type="number">'+
+			'</div>'+
+			'<div class="input-control switch jv-setting-switch" data-role="input-control">'+
+				'<label> Hiển thị nhắc từ'+
+					'<input id="notifChk" type="checkbox">'+
+					'<span class="check jv-setting-check"></span></label>'+
+				'<label> Nhắc từ ngẫu nhiên'+
+					'<input id="randomChk" type="checkbox">'+
+					'<span class="check jv-setting-check"></span></label>'+
+				'<label> Nhắc từ với âm thanh'+
+					'<input id="RemindSoundChk" type="checkbox">'+
+					'<span class="check jv-setting-check"></span></label>'+
+				'<label> Cho phép lưu lịch sử'+
+					'<input id="historyChk" type="checkbox">'+
+					'<span class="check jv-setting-check"></span></label>'+
+			'</div>'+
+			'<div class="form-actions">'+
+				'<button class="button primary" onclick="panel.applySetting()">'+
+					'Áp Dụng'+
+				'</button> '+
+				'<button class="button" type="button" onclick="$.Dialog.close()">'+
+					'Bỏ Qua'+
+				'</button> '+
+				'<button class="button del-button" onclick="panel.deleteAllHistory()">'+
+					'Xóa Lịch Sử'+
+				'</button> '+
+				'<button class="button del-button" onclick="panel.resetApp()">'+
+					'<b>Cài Đặt Lại</b>'+
+				'</button>'+
+			'</div>'+
+		'</div>';
+	
 }
 ;
 
@@ -1600,6 +1682,7 @@ SOUND_REMIND = false;
 MAX_REMIND = 15;
 MAX_HISTORY = 100;
 TIME_LOAD_SOUND = 3;
+DEFAULT_VOLUME = 0.75;
 
 NEW_WORD_TAB = "newword";
 KANJI_TAB = "kanji";
@@ -1666,3 +1749,9 @@ $(window).blur(function() {
 $(window).focus(function() {
     window.isFocused = true;
 });
+
+//volume slider
+function dropValueToInput() {
+	document.getElementById("sound-control").volume = $(".slider .complete").width()/200;
+}
+document.getElementById("sound-control").volume = DEFAULT_VOLUME;
