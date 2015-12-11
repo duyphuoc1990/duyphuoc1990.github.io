@@ -993,7 +993,6 @@ function AlertWord() {
     this.instance = null;
     this.nextWord;
     this.count = 0;
-    this.volume = 0.75;
     this.loadLocalStore();
 }
 AlertWord.prototype = {
@@ -1026,6 +1025,12 @@ AlertWord.prototype = {
         var flag = localStorage.getItem(SOUND_REMIND_FLAG);
         if (flag == null || flag == "on") {
             SOUND_REMIND = true;
+        }
+        // load sound volume
+        var volume = localStorage.getItem(JV_SOUND_VOLUME);
+        if (volume != null) {
+        	document.getElementById("slider").setAttribute("data-position", volume*100);
+            document.getElementById("sound-control").volume = volume;
         }
     },
     start: function() {
@@ -1671,6 +1676,7 @@ SHOW_NOTIF_FLAG = "jvdict-notif-flag";
 SOUND_REMIND_FLAG = "jvdict-reminder-with-sound";
 JV_MAX_REMIND = "jvdict-max-remind";
 JV_MAX_HISTORY = "jvdict-max-history";
+JV_SOUND_VOLUME = "jvdict-sound-volume";
 
 TIME_SHOW = 3;
 TIME_DELAY = 60;
@@ -1752,6 +1758,21 @@ $(window).focus(function() {
 
 //volume slider
 function dropValueToInput() {
-	document.getElementById("sound-control").volume = $(".slider .complete").width()/200;
+	var volume = $(".slider .complete").width()/200;
+	localStorage.setItem(JV_SOUND_VOLUME, volume);
+	document.getElementById("sound-control").volume = volume;
+	setTimeout(setVolume, 1000);
 }
-document.getElementById("sound-control").volume = DEFAULT_VOLUME;
+
+function setVolume(){
+	var volume = $(".slider .complete").width()/200;
+	localStorage.setItem(JV_SOUND_VOLUME, volume);
+	document.getElementById("sound-control").volume = volume;
+	setTimeout(setVolume2, 1000);
+}
+
+function setVolume2(){
+	var volume = $(".slider .complete").width()/200;
+	localStorage.setItem(JV_SOUND_VOLUME, volume);
+	document.getElementById("sound-control").volume = volume;
+}
