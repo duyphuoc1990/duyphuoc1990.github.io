@@ -1761,14 +1761,14 @@ function dropValueToInput() {
 	var volume = $(".slider .complete").width()/200;
 	localStorage.setItem(JV_SOUND_VOLUME, volume);
 	document.getElementById("sound-control").volume = volume;
-	setTimeout(setVolume, 1000);
+	setTimeout(setVolume, 750);
 }
 
 function setVolume(){
 	var volume = $(".slider .complete").width()/200;
 	localStorage.setItem(JV_SOUND_VOLUME, volume);
 	document.getElementById("sound-control").volume = volume;
-	setTimeout(setVolume2, 1000);
+	setTimeout(setVolume2, 750);
 }
 
 function setVolume2(){
