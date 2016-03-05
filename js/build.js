@@ -988,6 +988,8 @@ HistoryData.prototype = {
 }
 
 
+notifyingWord = "";
+
 function AlertWord() {
     this.imageURL = "./images/logo.png";
     this.instance = null;
@@ -1074,7 +1076,8 @@ AlertWord.prototype = {
                 icon: this.imageURL,
                 body: notifTxt
             });
-        
+            notifyingWord = notifTxt;
+            
         } else if (Notification.permission !== 'denied') {
             Notification.requestPermission(function(permission) {
                 if (permission === "granted") {
@@ -1082,6 +1085,7 @@ AlertWord.prototype = {
                         icon: this.imageURL,
                         body: notifTxt
                     });
+                    notifyingWord = notifTxt;
                 }
             });
         }
@@ -1131,6 +1135,20 @@ NotifChange.prototype = {
         $("#notif-change").html("");
         $("#notif-change").hide("slow");
     }
+}
+/** find the notifying word */
+function finfNotifyingWord(){
+	 $("#word-box").val(notifyingWord);
+     search.isWordTyped = false;
+     search.getResult(notifyingWord, false);
+     
+     var index = hisData.findbyText(hisData.jvremind, notifyingWord);
+     alert(index);
+     if (index >= 0) {
+         var hisID = hisData.jvremind[index].id;
+         var pos = $("#history-" + hisID).position();
+         $("#div-history").slimScroll({scrollBy: (pos.top - 5) + 'px',animate: true});
+     }
 }
 function ShowPanel() {
     this.helpPanelTxt = 
