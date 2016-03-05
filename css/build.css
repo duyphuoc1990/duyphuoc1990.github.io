@@ -9951,6 +9951,7 @@ div:hover {
 	margin: 2px 5px 10px 0;
 	background-color: #87B357;
 	box-shadow: 5px 5px 5px #888888;
+	padding-right: 5px;
 	text-align: center;
 	cursor: default;
 }
