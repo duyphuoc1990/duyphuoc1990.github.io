@@ -1143,7 +1143,6 @@ function finfNotifyingWord(){
      search.getResult(notifyingWord, false);
      
      var index = hisData.findbyText(hisData.jvremind, notifyingWord);
-     alert(index);
      if (index >= 0) {
          var hisID = hisData.jvremind[index].id;
          var pos = $("#history-" + hisID).position();
