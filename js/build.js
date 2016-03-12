@@ -1057,8 +1057,10 @@ AlertWord.prototype = {
         }
     },
     loadSound: function(notifTxt) {
+		var soundText = notifTxt.split("(", 1)[0];
+		soundText = soundText.split("（", 1)[0];
         if (SOUND_REMIND) {
-            soundURL = 'http://www.ispeech.org/p/generic/getaudio?text=' + notifTxt 
+            soundURL = 'http://www.ispeech.org/p/generic/getaudio?text=' + soundText 
             + '&voice=jpjapanesefemale&speed=-1&action=convert';
             $("#sound-remind").attr("src", soundURL);
             $("#sound-control").trigger('load');
